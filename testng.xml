@@ -3,7 +3,11 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="hooks.Hooks"/>
+      <class name="testSuite.ArrayTest"/>
+      <class name="testSuite.LoginTest"/>
+      <class name="testSuite.GraphTest"/>
+      <class name="testSuite.QueueTest"/>
+      <class name="testSuite.StackTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
