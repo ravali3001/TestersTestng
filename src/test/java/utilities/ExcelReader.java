@@ -1,3 +1,4 @@
+
 package utilities;
 
 import java.io.FileInputStream;
@@ -10,13 +11,17 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExcelReader {
-	public static Map<String, Map<String, String>> getDataForSheet(String sheetName) {
+public class ExcelReader {  
+
+	
+
+    public static Map<String, Map<String, String>> getDataForSheet(String sheetName) {
+
 
         Map<String, Map<String, String>> dataMap = new HashMap<>();
 
         try {
-        	String testDataFilePath = ConfigReader.getProperty("test_data_file_path");
+        	String testDataFilePath = ConfigReader.getProperty("test_data_file_path"); 
             FileInputStream fis = new FileInputStream(testDataFilePath);
 
             Workbook workbook = new XSSFWorkbook(fis);
