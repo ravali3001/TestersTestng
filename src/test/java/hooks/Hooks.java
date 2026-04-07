@@ -1,10 +1,9 @@
 package hooks;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+	
 
-	import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-	import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 	import org.apache.logging.log4j.LogManager;
 	import org.apache.logging.log4j.Logger;
 	import org.openqa.selenium.OutputType;
@@ -12,19 +11,20 @@ import org.testng.annotations.BeforeMethod;
 	import org.testng.ITestContext;
 	import org.testng.Reporter;
 
-	import factory.DriverFactory;
-	//import io.cucumber.java.After;
-	//import io.cucumber.java.Before;
-	//import io.cucumber.java.Scenario;
-	//import pageObjects.LoginPage;
 
-	public class Hooks {
+import factory.DriverFactory;
+//import io.cucumber.java.After;
+//import io.cucumber.java.Before;
+//import io.cucumber.java.Scenario;
+//import pageObjects.LoginPage;
 
-		private static final Logger logger = LogManager.getLogger(Hooks.class);
+public class Hooks {
 
-		//LoginPage loginPage;
+	private static final Logger logger = LogManager.getLogger(Hooks.class);
 
-		@BeforeMethod
+	// LoginPage loginPage;
+
+
 		@BeforeMethod
 		//@Before(order = 0)
 		public void setUp() {
@@ -48,7 +48,7 @@ import org.testng.annotations.BeforeMethod;
 			logger.info("successfull login landed on homepage: ");
 		}
 
-		@AfterMethod
+		
 		@AfterMethod
 		//public void tearDown() {
 		public void tearDown(Scenario scenario) {
@@ -64,8 +64,7 @@ import org.testng.annotations.BeforeMethod;
 			}
 			System.out.println("Driver before quit: " + DriverFactory.getDriver());
 			DriverFactory.quitDriver();
-		}
+		
+	
 	}
-
-
-
+}
