@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 public class BaseTest {
 
     @BeforeMethod(alwaysRun = true)
-    public void setup() {
+    public void baseSetup() {
         DriverFactory.initDriver();
 
         String url = ConfigReader.getProperty("url");

@@ -5,9 +5,10 @@
     <classes>
       <class name="testSuite.LoginTest">
         <methods>
-          <include name="setup"/>
           <include name="tearDown"/>
-          <include name="testValidLogin"/>
+          <include name="setup"/>
+          <include name="baseSetup"/>
+          <include name="verifyLoginButtonEnable"/>
         </methods>
       </class> <!-- testSuite.LoginTest -->
     </classes>
