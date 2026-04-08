@@ -53,7 +53,7 @@ public class DriverFactory {
 			throw new RuntimeException("Browser not supported: " + browser);
 		}
 
-		getDriver().get(ConfigReader.getProperty("url"));
+		//getDriver().get(ConfigReader.getProperty("url"));
 		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

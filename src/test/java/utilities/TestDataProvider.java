@@ -1,5 +1,6 @@
 package utilities;
 
+
 import java.util.Map;
 
 import org.testng.annotations.DataProvider;
@@ -10,15 +11,8 @@ public class TestDataProvider {
     Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
     Map<String, Map<String, String>> arrayData1 = ExcelReader.getArrayTryData();
 
-	/*@DataProvider(name = "codeProvider")
-    public Object[][] codeData() {
-        return new Object[][] {
-            {"print('Hello Array')"},
-            {"print('Test 123')"},
-            {"print(2+3)"}
-        };*/
-    
- @DataProvider(name = "arrayPracticeData")
+	
+    @DataProvider(name = "arrayPracticeData")
 	    public Object[][] getArrayData() {
 	        Object[][] data = new Object[arrayData.size()][3]; // assuming two columns: input, expected
 	        int i = 0;
@@ -29,10 +23,10 @@ public class TestDataProvider {
 	            data[i][2] = values.get("ExpectedResults");
 	            i++;
 	        }
-	        return data; 
+	        return data;  
 	    }
- @DataProvider(name = "arrayPracticeData1")
- public Object[][] getArrayTry() {
+    @DataProvider(name = "arrayPracticeData1")
+     public Object[][] getArrayTry() {
      Object[][] data = new Object[arrayData1.size()][4]; // assuming two columns: input, expected
      int i = 0;
      for (String key : arrayData1.keySet()) {
@@ -78,7 +72,7 @@ public class TestDataProvider {
 		            {"Graph"}
 		        };
 		    }
-			    @DataProvider(name = "ArrayPracticeQuestions")
+			 @DataProvider(name = "ArrayPracticeQuestions")
 			    public Object[][] codeData3() {
 			        return new Object[][] { 
 			        	{"Search the array"},
@@ -89,4 +83,30 @@ public class TestDataProvider {
 		    };
 			    }
 	 
+
+	private Object[][] getDataForTestCase(String testCaseName) {
+		Object[][] data = new Object[1][1];
+		data[0][0] = ExcelReader.getLoginData().get(testCaseName);
+		return data;
+	}
+
+	@DataProvider(name = "validLogin")
+	public Object[][] validLogin() {
+		return getDataForTestCase("Login_Valid");
+	}
+
+	@DataProvider(name = "invalidLogin")
+	public Object[][] invalidLogin() {
+		return getDataForTestCase("Login_Invalid");
+	}
+
+	@DataProvider(name = "invalidUsername")
+	public Object[][] invalidUsername() {
+		return getDataForTestCase("Login_Invalid_Username");
+	}
+
+	@DataProvider(name = "invalidPassword")
+	public Object[][] invalidPassword() {
+		return getDataForTestCase("Login_Invalid_Password");
+	}
 }

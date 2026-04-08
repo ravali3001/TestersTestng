@@ -17,12 +17,13 @@ public class LoginPage {
     WebDriver driver;
     ConfigReader configReader;
     static Map<String, Map<String, String>> testData;
-    
   
     public LoginPage() {
     	this.driver = DriverFactory.getDriver();
+ 
     	//this.driver=driver;
        
+
     	ConfigReader.loadConfig();
     }
 
@@ -70,7 +71,7 @@ public class LoginPage {
     }
 
     /** Click Login button */
-    public void clickLogin() {
+    public void clickLoginButton() {
         driver.findElement(loginBtn).click();
     }
 
@@ -91,7 +92,7 @@ public class LoginPage {
     	Map<String, String> validCreds = testData.get("Login_Valid");
 	    enterUsername(validCreds.get("Username"));
 	    enterPassword(validCreds.get("Password"));
-	    clickLogin();
+	    clickLoginButton();
     }
     
     public void waitForSuccessfulLogin() {
@@ -109,9 +110,4 @@ public class LoginPage {
         return driver.findElement(passwordField).getAttribute("type");
     }
 
-    public void login(String user, String pass) {
-        enterUsername(user);
-        enterPassword(pass);
-        clickLogin();
-    }
 }
