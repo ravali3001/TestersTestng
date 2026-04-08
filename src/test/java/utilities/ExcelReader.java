@@ -78,8 +78,8 @@ public class ExcelReader {
     	return getDataForSheet(ConfigReader.getProperty("editor_data_sheet_name"));
     }
     public static Map<String, Map<String, String>> getArraydataData() {
-    	return getDataForSheet(ConfigReader.getProperty("ArrayData_data_sheet_name"));
-    }
+    	return getDataForSheet(ConfigReader.getProperty("Array_data_sheet_name"));
+    } 
 
     public static Map<String, Map<String, String>> getArrayTryData() {
     	return getDataForSheet(ConfigReader.getProperty("ArrayTry_data_sheet_name"));

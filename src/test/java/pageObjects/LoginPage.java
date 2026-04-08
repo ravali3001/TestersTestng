@@ -19,8 +19,9 @@ public class LoginPage {
     static Map<String, Map<String, String>> testData;
     
   
-    public LoginPage() {
-    	this.driver = DriverFactory.getDriver();
+    public LoginPage(WebDriver driver) {
+    	//this.driver = DriverFactory.getDriver();
+    	this.driver=driver;
        
     	ConfigReader.loadConfig();
     }
@@ -108,4 +109,9 @@ public class LoginPage {
         return driver.findElement(passwordField).getAttribute("type");
     }
 
+    public void login(String user, String pass) {
+        enterUsername(user);
+        enterPassword(pass);
+        clickLogin();
+    }
 }

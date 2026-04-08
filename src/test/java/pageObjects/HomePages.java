@@ -68,16 +68,16 @@ public class HomePages {
 
    	    // Open dropdown first
    	   /* driver.findElement(DSdropdown).click();*/
-      	 wait.until(ExpectedConditions.elementToBeClickable(DSdropdown)).click();
+      	// wait.until(ExpectedConditions.elementToBeClickable(DSdropdown)).click();
 
    	    // Click module
-   	    By module = By.xpath("//a[normalize-space()='" + moduleName + "']");
-   	    wait.until(ExpectedConditions.elementToBeClickable(module)).click();
-   	
+   	    //By module = By.xpath("//a[normalize-space()='" + moduleName + "']");
+   	   // wait.until(ExpectedConditions.elementToBeClickable(module)).click();
+   	//-------testng
    	    // Open dropdown first
-   	// wait.until(ExpectedConditions.elementToBeClickable(DSdropdown)).click();
-   	   //By module = By.linkText(moduleName);
-         //wait.until(ExpectedConditions.elementToBeClickable(module)).click();
+   	 //wait.until(ExpectedConditions.elementToBeClickable(DSdropdown)).click();
+   	   By module = By.linkText(moduleName);
+         wait.until(ExpectedConditions.elementToBeClickable(module)).click();
    }
    
   
@@ -101,10 +101,12 @@ public class HomePages {
    }
     
    
-   public void clickAlertR() { 	
-      WebElement result = driver.findElement(Error); 
+   public  String clickAlertR() { 	
+      WebElement result = wait.until(
+     	        ExpectedConditions.elementToBeClickable(Error));
 	   String text = result.getText();
    logger.info("Result Message: " + text); 
+   return getMessage();
    }
    
    

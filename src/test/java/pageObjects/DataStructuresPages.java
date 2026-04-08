@@ -148,7 +148,20 @@ public class DataStructuresPages {
     public boolean isTextDisplayed(String text) {
         return driver.findElement(DStitle).isDisplayed();
     }
+    
+    public String getTryEditorResult() {
+        try {
+            Alert alert = driver.switchTo().alert();
+            String alertText = alert.getText();
+            alert.accept();
+            return "Error";  // or return alertText if needed
+        } catch (NoAlertPresentException e) {
+            return driver.findElement(output).getText();
+        }
+    }
+    
 }
+
 
 
 

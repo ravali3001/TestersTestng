@@ -37,6 +37,7 @@ public class DataStructuresTest {
            ConfigReader.getProperty("password")
        );
    }
+   
     @Test
     public void DSclick() {
     	DSintro.DSClickIntro();
@@ -44,43 +45,28 @@ public class DataStructuresTest {
     	DSintro.DSClickTryhere();
     	
     }
+    
     @Test
    public void DsclickPractice() {
     	DSintro.DSClickIntro();
-
-   	DSintro.DSClickPracticeQ();
+     	DSintro.DSClickPracticeQ();
 
    }
    
-    @DataProvider(name = "excelData")
-    public Map<String, Map<String, String>> getExcelData() {
-        return ExcelReader.getArraydataData(); // returns Object[][]
-    }
-
-    @Test(dataProvider = "excelData")
-    public void testWithExcel(String input, String expected) {
-    	DSintro.DSClickIntro();
-    	DSintro.DSClickTimeComplexity();
-    	DSintro.DSClickTryhere();
-        DSintro.enterCode(input);
-        DSintro.clickRunButton();
-        String actual = DSintro.getOutput();
-        Assert.assertEquals(actual, expected);
-    }
-    @Test(dataProvider = "arrayPracticeData")
-    public void DSclickPracticeWithData(String input, String expected) {
+    @Test(dataProvider = "arrayPracticeData", dataProviderClass = utilities.TestDataProvider.class)
+    public void DSclickPracticeWithData(String testCaseName,String code, String expected) {
     	DSintro.DSClickIntro();
     	DSintro.DSClickTimeComplexity();
     	DSintro.DSClickTryhere();
         
         // Send input to Try Editor (example)
-        DSintro.enterCode(input);  
+        DSintro.enterCode(code);  
 
         // Click Run
         DSintro.clickRunButton();
 
         // Assertion
-        String actualOutput = DSintro.getOutput();
+        String actualOutput = DSintro.getTryEditorResult();
         Assert.assertEquals(actualOutput, expected, "Output is not as expected!");
     }
 
