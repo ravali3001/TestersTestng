@@ -43,7 +43,7 @@ public class ArrayTest {
 	        arrayPage = new ArrayPage(DriverFactory.getDriver());
 		  	 TryEditorPage tryEditorPage = new TryEditorPage(DriverFactory.getDriver());
 
-	        loginPage=new LoginPage(DriverFactory.getDriver());
+	        loginPage=new LoginPage();
 	    	loginPage.clickGetStarted();
 	        loginPage.clickSignIn();
 	        loginPage.login(

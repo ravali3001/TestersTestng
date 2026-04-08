@@ -19,9 +19,9 @@ public class LoginPage {
     static Map<String, Map<String, String>> testData;
     
   
-    public LoginPage(WebDriver driver) {
-    	//this.driver = DriverFactory.getDriver();
-    	this.driver=driver;
+    public LoginPage() {
+    	this.driver = DriverFactory.getDriver();
+    	//this.driver=driver;
        
     	ConfigReader.loadConfig();
     }

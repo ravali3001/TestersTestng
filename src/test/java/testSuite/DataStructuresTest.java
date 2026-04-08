@@ -29,7 +29,7 @@ public class DataStructuresTest {
        ConfigReader.loadConfig();
        
        DSintro= new DataStructuresPages(DriverFactory.getDriver());
-             loginPage=new LoginPage(DriverFactory.getDriver());
+             loginPage=new LoginPage();
    	loginPage.clickGetStarted();
        loginPage.clickSignIn();
        loginPage.login(

@@ -31,7 +31,7 @@ public class HomeTest {
       DriverFactory.initDriver();  
       ConfigReader.loadConfig();
       HomeDS= new HomePages(DriverFactory.getDriver());
-      loginPage=new LoginPage(DriverFactory.getDriver());
+      loginPage=new LoginPage();
       loginPage.clickGetStarted();
        
    }
