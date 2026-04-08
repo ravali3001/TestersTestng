@@ -3,3 +3,4 @@ test-output/
 logs/
 *.html
 *.xml
+.DS_Store
