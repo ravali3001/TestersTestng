@@ -9,13 +9,13 @@ import factory.DriverFactory;
 
 
 public class RegisterTest {
-	//driveWebDriver;
-	//driver = DriverFactory.getDriver();
+	//WebDriver driver;
+//	driver = DriverFactory.getDriver();
 	@Test(priority=1)
 	void reg1()
 	{
 		System.out.println("REGISTER");	
-		WebDriver driver;
+	WebDriver driver;
 		driver = DriverFactory.getDriver();
 	}
 
