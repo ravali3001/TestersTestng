@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import base.BaseTest;
 import factory.DriverFactory;
 import pageObjects.ArrayPage;
 import pageObjects.LoginPage;
@@ -19,7 +20,7 @@ import java.util.Map;
 
 
 @Listeners(listeners.TestListener.class) 
-public class ArrayTest {
+public class ArrayTest extends BaseTest{
 	
 
 	    WebDriver driver;
@@ -28,28 +29,30 @@ public class ArrayTest {
 	    TryEditorPage tryEditorPage;
         Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
         Map<String, Map<String, String>> arrayData1 = ExcelReader.getArrayTryData();
+       // arrayPage = new ArrayPage(DriverFactory.getDriver());
 
         private static final Logger logger = LogManager.getLogger(ArrayTest.class); 
 
-
-	    @BeforeMethod()
+        @BeforeMethod(dependsOnMethods = {"baseSetup"})
+	  	    
 	    public void setup() {
 	       // driver = new ChromeDriver();
 	        //driver.manage().window().maximize();
 	        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	        DriverFactory.initDriver();  
-	        ConfigReader.loadConfig();
+	        //DriverFactory.initDriver();  
+	        //ConfigReader.loadConfig();
+            driver = DriverFactory.getDriver(); // or new ChromeDriver()
 
-	        arrayPage = new ArrayPage(DriverFactory.getDriver());
-		  	 TryEditorPage tryEditorPage = new TryEditorPage(DriverFactory.getDriver());
+	        arrayPage = new ArrayPage(driver);
+		  	// TryEditorPage tryEditorPage = new TryEditorPage(DriverFactory.getDriver());
 
 	        loginPage=new LoginPage();
 	    	loginPage.clickGetStarted();
 	        loginPage.clickSignIn();
-	        loginPage.login(
-	            ConfigReader.getProperty("username"),
-	            ConfigReader.getProperty("password")
-	        );
+	        loginPage.successfulLogin();
+	            //ConfigReader.getProperty("username"),
+	            //ConfigReader.getProperty("password")
+	        //);
 	    }
 	    @Test
 	   public void clickArrayModule() {

@@ -109,5 +109,12 @@ public class LoginPage {
     public String getPasswordFieldType() {
         return driver.findElement(passwordField).getAttribute("type");
     }
+    public void login(String username, String password) {
+        enterUsername(username);
+        enterPassword(password);
+        clickLoginButton();
+    }
 
+	
+    
 }
