@@ -11,11 +11,10 @@ import factory.DriverFactory;
 import pageObjects.ArrayPage;
 import pageObjects.LoginPage;
 import pageObjects.TryEditorPage;
-import utilities.ConfigReader;
+
 import utilities.ExcelReader;
 
-import java.time.Duration;
-import java.util.List;
+
 import java.util.Map;
 
 
@@ -36,11 +35,7 @@ public class ArrayTest extends BaseTest{
         @BeforeMethod(dependsOnMethods = {"baseSetup"})
 	  	    
 	    public void setup() {
-	       // driver = new ChromeDriver();
-	        //driver.manage().window().maximize();
-	        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	        //DriverFactory.initDriver();  
-	        //ConfigReader.loadConfig();
+	       
             driver = DriverFactory.getDriver(); // or new ChromeDriver()
 
 	        arrayPage = new ArrayPage(driver);
@@ -50,9 +45,7 @@ public class ArrayTest extends BaseTest{
 	    	loginPage.clickGetStarted();
 	        loginPage.clickSignIn();
 	        loginPage.successfulLogin();
-	            //ConfigReader.getProperty("username"),
-	            //ConfigReader.getProperty("password")
-	        //);
+	            
 	    }
 	    @Test
 	   public void clickArrayModule() {
