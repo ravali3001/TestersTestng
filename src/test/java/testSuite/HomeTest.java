@@ -10,14 +10,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import base.BaseTest;
 import factory.DriverFactory;
 import pageObjects.HomePages;
 import pageObjects.LoginPage;
 
-import utilities.ConfigReader;
 import utilities.ExcelReader;
 
-public class HomeTest {
+public class HomeTest extends BaseTest{
 	 private static final Logger logger = LogManager.getLogger(HomeTest.class); 
 
 	WebDriver driver;
@@ -25,12 +25,10 @@ public class HomeTest {
     LoginPage loginPage;
     Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
 
-    @BeforeMethod()
+    @BeforeMethod(dependsOnMethods = {"baseSetup"})
     public void setup() {
-      
-      DriverFactory.initDriver();  
-      ConfigReader.loadConfig();
-      HomeDS= new HomePages(DriverFactory.getDriver());
+    	driver = DriverFactory.getDriver();
+      HomeDS= new HomePages(driver);
       loginPage=new LoginPage();
       loginPage.clickGetStarted();
        
@@ -78,16 +76,14 @@ public class HomeTest {
     Assert.assertEquals(expectedTitle ,actualTitle);
     logger.info("expectedTitle {},{},",expectedTitle ,actualTitle);
     //loginPage.clickSignIn();
-    loginPage.login(
-        ConfigReader.getProperty("username"),
-        ConfigReader.getProperty("password"));
+    loginPage.successfulLogin();
     String expectedTitle1 = "You are logged in"
     		+ "";
 	   logger.info("1"); 
     String actualTitle1 = HomeDS.clickAlertR();
     logger.info("2");
     Assert.assertEquals(expectedTitle1 ,actualTitle1);
-    logger.info("expectedTitle {},{},{}",expectedTitle ,actualTitle);
+    logger.info("expectedTitle {},{}",expectedTitle ,actualTitle);
     
     
    }
@@ -104,9 +100,8 @@ public class HomeTest {
 	    logger.info("2");
 	    Assert.assertEquals(expectedTitle ,actualTitle);
 	    logger.info("expectedTitle {},{},",expectedTitle ,actualTitle);
-	    loginPage.login(
-	        ConfigReader.getProperty("username"),
-	        ConfigReader.getProperty("password"));
+	    loginPage.successfulLogin();
+	        
 	   
 	    HomeDS.clickDDArrayBS();
 	    HomeDS.clickModule(topic);
@@ -116,7 +111,7 @@ public class HomeTest {
 	    		    topic.toLowerCase().contains(actualTitle2.toLowerCase()),
 	    		    "Mismatch: topic=" + topic + ", actual=" + actualTitle2
 	    		);
-		    logger.info("expectedTitle {},{},{}",topic,actualTitle2);
+		    logger.info("expectedTitle {},{}",topic,actualTitle2);
 	       
    }
    
