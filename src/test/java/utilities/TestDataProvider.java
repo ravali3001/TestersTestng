@@ -1,6 +1,8 @@
 package utilities;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.testng.annotations.DataProvider;
@@ -11,13 +13,14 @@ public class TestDataProvider {
     Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
     Map<String, Map<String, String>> arrayData1 = ExcelReader.getArrayTryData();
 
-	
-    @DataProvider(name = "arrayPracticeData")
-	    public Object[][] getArrayData() {
-	        Object[][] data = new Object[arrayData.size()][3]; // assuming two columns: input, expected
-	        int i = 0;
+	//-----------------------ARRAY TRY HERE
+    
+            @DataProvider(name = "arrayPracticeData")
+	        public Object[][] getArrayData() {
+	        Object[][] data = new Object[arrayData.size()][3]; 
 	        for (String key : arrayData.keySet()) {
 	            Map<String, String> values = arrayData.get(key);
+	            int i=0;
 	            data[i][0] = values.get("TestCaseName");
 	            data[i][1] = values.get("PythonCode");
 	            data[i][2] = values.get("ExpectedResults");
@@ -25,29 +28,87 @@ public class TestDataProvider {
 	        }
 	        return data;  
 	    }
-    @DataProvider(name = "arrayPracticeData1")
-     public Object[][] getArrayTry() {
-     Object[][] data = new Object[arrayData1.size()][4]; // assuming two columns: input, expected
-     int i = 0;
-     for (String key : arrayData1.keySet()) {
-    	
+    //--------------------------ARRAY PRACTICE QUESTIONS
+            /*@DataProvider(name = "arrayData1")
+            public Object[][] getArrayTry() {
 
-    	        Map<String, String> values = arrayData1.get(key);
+                List<Object[]> dataList = new ArrayList<>();
 
-    	        
-    	 if (values.get("TestCaseName") == null || values.get("ExpectedResults") == null) {
+                for (String key : arrayData1.keySet()) {
+
+                    Map<String, String> values = arrayData1.get(key);
+
+                    System.out.println("Row: " + key + " -> " + values);
+
+                    if (values.get("TestCaseName") == null ||
+                        values.get("Results") == null ||
+                        values.get("PythonCode") == null) {
+
+                        System.out.println("Skipping invalid row: " + key);
+                        continue;
+                    }
+
+                    dataList.add(new Object[] {
+                        values.get("TestCaseName"),
+                        values.get("Questions"),
+                        values.get("PythonCode"),
+                        values.get("Results")
+                    });
+                }
+
+                return dataList.toArray(new Object[0][]);
+            }*/
+    
+            @DataProvider(name = "arrayData1")
+            public Object[][] getArrayTry() {
+
+                List<Object[]> dataList = new ArrayList<>();
+
+                for (String key : arrayData1.keySet()) {
+
+                    Map<String, String> values = arrayData1.get(key);
+
+                    System.out.println("Row: " + key + " -> " + values);
+
+                    if (values.get("Results") == null || values.get("Results").isEmpty() ||
+                        values.get("PythonCode") == null || values.get("PythonCode").isEmpty()) {
+                    	
+                        System.out.println("Skipping invalid row: " + key);
+                        continue;
+                    }
+
+                    dataList.add(new Object[] {
+                        key,  // ✅ test case name
+                        values.get("Questions"),
+                        values.get("PythonCode"),
+                        values.get("Results")
+                    });
+                }
+
+                return dataList.toArray(new Object[0][]);
+            }
+
+                
+        /* @DataProvider(name = "arrayData1")
+            public Object[][] getArrayTry() {
+            Object[][] data = new Object[arrayData1.size()][4]; 
+            int i = 0;
+            for (String key : arrayData1.keySet()) {
+    	        Map<String, String> values = arrayData1.get(key);    	        
+    	        if (values.get("TestCaseName") == null || values.get("ExpectedResults") == null) {
     		    System.out.println("Skipping invalid row: " + key);
     		    continue;
-    		}
-         data[i][0] = values.get("TestCaseName");
-         data[i][1]=values.get("Questions");
-         data[i][2] = values.get("PythonCode");
-         data[i][3] = values.get("ExpectedResults");
-         i++;
-     }
-     return data; 
- }
-
+    		   }
+            data[i][0] = values.get("TestCaseName");
+            data[i][1]=values.get("Questions");
+            data[i][2] = values.get("PythonCode");
+            data[i][3] = values.get("ExpectedResults");
+            i++;
+            }
+            return data;
+         }*/
+ 
+//_____|-----------|__________|----------HOMEMODULE
 
 		    @DataProvider(name = "codeProvider")
 		    public Object[][] codeData() {
@@ -72,7 +133,9 @@ public class TestDataProvider {
 		            {"Graph"}
 		        };
 		    }
-			 @DataProvider(name = "ArrayPracticeQuestions")
+         	    
+//=============================ARRAY PRACTICECQUESTIONS		    
+			@DataProvider(name = "ArrayPracticeQuestions")
 			    public Object[][] codeData3() {
 			        return new Object[][] { 
 			        	{"Search the array"},
@@ -83,7 +146,7 @@ public class TestDataProvider {
 		    };
 			    }
 	 
-
+//__________________________LOGIN DATA_____________________________
 	private Object[][] getDataForTestCase(String testCaseName) {
 		Object[][] data = new Object[1][1];
 		data[0][0] = ExcelReader.getLoginData().get(testCaseName);

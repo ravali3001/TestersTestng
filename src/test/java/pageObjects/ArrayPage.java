@@ -102,17 +102,17 @@ package pageObjects;
 			    }
 			    
 			    public void clickSearchTheArray() {
-					 driver.findElement(practiceQuestions).click();
+					 //driver.findElement(practiceQuestions).click();
 	                 driver.findElement(searchTheArray).click();
 			    }
 
 			    public void clickMaxConsecutiveOnes() {
-				    driver.findElement(practiceQuestions).click();
+				   // driver.findElement(practiceQuestions).click();
 			        driver.findElement(maxConsecutiveOnes).click();
 			    }
 
 			    public void clickFindNumbersWithEvenDigits() {
-				    driver.findElement(practiceQuestions).click();
+				    //driver.findElement(practiceQuestions).click();
 			        driver.findElement(evenDigits).click();
 			    }
 

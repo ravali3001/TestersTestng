@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.Reporter;
 
 import factory.DriverFactory;
@@ -46,18 +47,17 @@ public class Hooks {
 
 	@AfterMethod
 	// public void tearDown() {
-	public void tearDown(Scenario scenario) {
+	public void tearDown(ITestResult result) {
 		logger.info("===== Test Finished =====");
 
-		if (scenario.isFailed()) {
+		 if (ITestResult.FAILURE == result.getStatus()) {
 
-			String fileName = scenario.getName().replaceAll(" ", "_");
+		        String fileName = result.getName();
 
-			byte[] screenshot = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
+		        byte[] screenshot = ((TakesScreenshot) DriverFactory.getDriver())
+		                .getScreenshotAs(OutputType.BYTES);
 
-			scenario.attach(screenshot, "image/png", fileName);
-		}
-		System.out.println("Driver before quit: " + DriverFactory.getDriver());
-		DriverFactory.quitDriver();
-	}
-}
+		        // You can save screenshot to file if needed
+		        System.out.println("Screenshot captured for: " + fileName);
+		    }
+}}

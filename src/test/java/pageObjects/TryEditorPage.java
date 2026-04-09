@@ -10,12 +10,17 @@ package pageObjects;
 	import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.interactions.Actions;
 
+import factory.DriverFactory;
+import utilities.ConfigReader;
+
 	public class TryEditorPage {
 
 	    WebDriver driver;
 
-	    public TryEditorPage(WebDriver driver) {
-	        this.driver = driver;
+	    public TryEditorPage() {
+	    	this.driver = DriverFactory.getDriver();
+		       
+	    	ConfigReader.loadConfig();
 	    }
 
 	    // Locators
@@ -26,12 +31,12 @@ package pageObjects;
 
 
 	    public void enterCodeTest(String code) {
-	        driver.findElement(codeTextArea).clear();
-	        driver.findElement(codeTextArea).sendKeys(code);
+	        //driver.findElement(codeTextArea).clear();
+	        driver.findElement(codeTextArea).click();//sendKeys(code);
 	    }
 
 	    public void clickRun() {
-	        driver.findElement(runButton).click();
+	        driver.findElement(runButton).click(); 
 	    }
 
 	    public String getOutput() {
