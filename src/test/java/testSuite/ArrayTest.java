@@ -44,15 +44,13 @@ public class ArrayTest extends BaseTest{
             driver = DriverFactory.getDriver(); // or new ChromeDriver()
 
 	        arrayPage = new ArrayPage(driver);
-		  	// TryEditorPage tryEditorPage = new TryEditorPage(DriverFactory.getDriver());
+		  	 tryEditorPage = new TryEditorPage(driver);
 
 	        loginPage=new LoginPage();
 	    	loginPage.clickGetStarted();
 	        loginPage.clickSignIn();
 	        loginPage.successfulLogin();
-	            //ConfigReader.getProperty("username"),
-	            //ConfigReader.getProperty("password")
-	        //);
+	            
 	    }
 	    @Test
 	   public void clickArrayModule() {
@@ -177,49 +175,60 @@ public class ArrayTest extends BaseTest{
 	        Assert.assertEquals(ExpectedTitle,actualTitle);
 	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
 	  }
-	  @Test(dataProvider = "arrayPracticeData1" ,dataProviderClass = utilities.TestDataProvider.class)
+	  @Test(dataProvider = "arrayData1" ,dataProviderClass = utilities.TestDataProvider.class)
 	  //@Test(dataProvider = "ArrayPracticeQuestions",dataProviderClass = utilities.DataProvider1.class)
 
 	  public void SubmitPracticeQuestions(String testcaseName,String Questions,String pythonCode,String expectedOutput) {
 		  arrayPage.clickGetStartesArr();
-
 		  arrayPage.clickArraysInPython();
           arrayPage.clickPracticeQuestions();
-          arrayPage.clickSearchTheArray();
+          arrayPage.clickQuestion(Questions);
+		  //arrayPage.clickArraysInPython();
+         // arrayPage.clickPracticeQuestions();
+          //arrayPage.clickSearchTheArray();
           //arrayPage.clickQuestion(Questions); 
-          arrayPage.clearEdit();
+          arrayPage.clearEdit(); 
           
-          tryEditorPage.enterCode(pythonCode); 
-          tryEditorPage.submit();
-	  
+         arrayPage.enterCodeInEditor(pythonCode); 
+         tryEditorPage.submit();
+         String ExpectedTitle="Error occurred during submission";
+
+         String actualTitle =arrayPage.getResultAfterSubmit();
+	        Assert.assertEquals(ExpectedTitle,actualTitle);
+	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
 	  }
 	  
-	   /* @Test(priority = 3)
-	 public void verifyPracticeQuestion() {
-	        Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
-	        String[] codes=null;
-	    	for (String code : codes) {
-	    	    arrayPage.enterCodeInEditor(code);
-	    	    arrayPage.clickRunButton();
-	    	}
-	        arrayPage.clickPracticeQuestions();
-	        arrayPage.clickSearchTheArray();
+	  @Test(dataProvider = "arrayData1" ,dataProviderClass = utilities.TestDataProvider.class)
+	  //@Test(dataProvider = "ArrayPracticeQuestions",dataProviderClass = utilities.DataProvider1.class)
 
-	        arrayPage.clickTryHere();
-	        arrayPage.enterCodeInEditor("print('Search')");
-	        arrayPage.clickRunButton();
+	  public void RunBtnPracticeQuestions(String testcaseName,String Questions,String pythonCode,String expectedOutput) {
+		  arrayPage.clickGetStartesArr();
+		  arrayPage.clickArraysInPython();
+          arrayPage.clickPracticeQuestions();
+          arrayPage.clickQuestion(Questions);
+		  //arrayPage.clickArraysInPython();
+         // arrayPage.clickPracticeQuestions();
+          //arrayPage.clickSearchTheArray();
+          //arrayPage.clickQuestion(Questions); 
+          arrayPage.clearEdit(); 
+          
+         arrayPage.enterCodeInEditor(pythonCode); 
+         tryEditorPage.clickRun();
+         String ExpectedTitle=expectedOutput;
 
-	        String result = arrayPage.getOutput();
-	        System.out.println("Practice Output: " + result);
-	    }*/
-
+         String actualTitle =arrayPage.getResultAfterRun();
+	        Assert.assertEquals(ExpectedTitle,actualTitle);
+	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+	  }
+	  
+	   
 	  @AfterMethod
 	  public void tearDown() {
-	      if (driver != null) {
-	          driver.quit();
+	     // if (driver != null) {
+	      //    driver.quit();
 	      }
 	  }
 
-	}
+	
 
 
