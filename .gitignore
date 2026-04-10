@@ -5,3 +5,4 @@ logs/
 *.html
 *.xml
 .DS_Store
+chaintestreport/
