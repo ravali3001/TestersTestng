@@ -29,6 +29,7 @@ public class StackTest extends BaseTest {
 	public void testStackTopics(String[] topics) {
 		for (int i = 0; i < topics.length; i++) {
 			stackPage.clickTopic(topics[i]);
+			logger.info("user should be redirected to destination page of stack topics covered.");
 			Assert.assertTrue(stackPage.isCorrectPageDisplayed(topics[i]),
 					"Expected " + topics[i] + " to be displayed, but its not displayed.");
 		}
@@ -38,6 +39,7 @@ public class StackTest extends BaseTest {
 	public void testPracticeQuestionsLink() {
 		stackPage.clickTopic("Implementation");
 		stackPage.clickPracticeQuestions();
+		logger.info("user is on the practice questions page of stack.");
 		Assert.assertTrue(stackPage.driver.getTitle().contains("Practice"),
 				"Expected Praction questions page to be displayed, but its not displayed.");
 	}
@@ -53,6 +55,7 @@ public class StackTest extends BaseTest {
         editorPage.clickRun();
 
 		String output = editorPage.getOutput();
+		logger.info("python code is valid.");
 		Assert.assertTrue(output.equals(editorData.get("ExpectedOutput")),
 				"Expected Success but failed.");
 	}
@@ -68,6 +71,7 @@ public class StackTest extends BaseTest {
         editorPage.clickRun();
 
 		editorPage.acceptAlert();
+		logger.info("python code is Invalid.");
 		Assert.assertTrue(editorPage.isRunButtonDisplayed(),
 				"Expected to display run button, but not displayed.");
 	}

@@ -28,6 +28,7 @@ public class QueueTest extends BaseTest {
 	public void testQueueTopics(String[] topics) {
 		for (int i = 0; i < topics.length; i++) {
 			queuePage.clickTopic(topics[i]);
+			logger.info("user should be redirected to destination page of queue.");
 			Assert.assertTrue(queuePage.isOnTopicPage(topics[i]),
 					"Expected " + topics[i] + " to be displayed, but its not displayed.");
 		}
@@ -36,6 +37,7 @@ public class QueueTest extends BaseTest {
 	public void testPracticeQuestionsLink() {
 		queuePage.clickTopic("Implementation of Queue in Python");
 		queuePage.clickPracticeQuestions();
+		logger.info("user is on the practice questions page.");
 		Assert.assertTrue(queuePage.isOnPracticeQuestionsPage(),
 				"Expected Praction questions page to be displayed, but its not displayed.");
 	}
@@ -50,6 +52,7 @@ public class QueueTest extends BaseTest {
         editorPage.clickRun();
 
 		String output = editorPage.getOutput();
+		logger.info("python code is valid.");
 		Assert.assertTrue(output.equals(editorData.get("ExpectedOutput")),
 				"Expected Success but failed.");
 	}
@@ -64,6 +67,7 @@ public class QueueTest extends BaseTest {
         editorPage.clickRun();
 
 		editorPage.acceptAlert();
+		logger.info("python code is Invalid.");
 		Assert.assertTrue(editorPage.isRunButtonDisplayed(),
 				"Expected to display run button, but not displayed.");
 	}
