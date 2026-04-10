@@ -46,7 +46,6 @@ public class Hooks {
 	}
 
 	@AfterMethod
-	// public void tearDown() {
 	public void tearDown(ITestResult result) {
 		logger.info("===== Test Finished =====");
 
