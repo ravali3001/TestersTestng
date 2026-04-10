@@ -103,6 +103,19 @@ public class TestDataProvider {
 
 		return data;
 	}
+	
+	//  Queue
+	
+	@DataProvider(name = "queueTopics")
+	public Object[][] queueTopics() {
+		Object[][] data = new Object[4][1];
+		data[0][0] = "Implementation of Queue in Python";
+		data[1][0] = "Implementation using collections.deque";
+		data[2][0] = "Implementation using array";
+		data[3][0] = "Queue Operations";
+
+		return data;
+	}
 
 	// try editor
 	private Object[][] getEditorDataForTestCase(String testCaseName) {

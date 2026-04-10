@@ -3,14 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testSuite.LoginTest">
+      <class name="testSuite.QueueTest">
         <methods>
           <include name="tearDown"/>
           <include name="setup"/>
           <include name="baseSetup"/>
-          <include name="verifyInvalidLoginErrorMsg" invocation-numbers="0"/>
+          <include name="testPracticeQuestionsLink"/>
+          <include name="dsAlgoLogin"/>
         </methods>
-      </class> <!-- testSuite.LoginTest -->
+      </class> <!-- testSuite.QueueTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
