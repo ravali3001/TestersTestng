@@ -14,13 +14,16 @@ public class TestDataProvider {
     Map<String, Map<String, String>> arrayData1 = ExcelReader.getArrayTryData();
 
 	//-----------------------ARRAY TRY HERE
-    
-            @DataProvider(name = "arrayPracticeData")
+   
+
+	
+            @DataProvider(name = "arrayPracticeData") 
 	        public Object[][] getArrayData() {
 	        Object[][] data = new Object[arrayData.size()][3]; 
+	        int i=0;
 	        for (String key : arrayData.keySet()) {
 	            Map<String, String> values = arrayData.get(key);
-	            int i=0;
+	            //int i=0;
 	            data[i][0] = values.get("TestCaseName");
 	            data[i][1] = values.get("PythonCode");
 	            data[i][2] = values.get("ExpectedResults");
@@ -78,7 +81,7 @@ public class TestDataProvider {
                     }
 
                     dataList.add(new Object[] {
-                        key,  // ✅ test case name
+                        key,  // testcasename
                         values.get("Questions"),
                         values.get("PythonCode"),
                         values.get("Results")

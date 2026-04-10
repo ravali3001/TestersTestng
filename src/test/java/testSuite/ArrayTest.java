@@ -39,7 +39,7 @@ public class ArrayTest extends BaseTest{
             driver = DriverFactory.getDriver(); // or new ChromeDriver()
 
 	        arrayPage = new ArrayPage(driver);
-		  	// TryEditorPage tryEditorPage = new TryEditorPage(DriverFactory.getDriver());
+		    tryEditorPage = new TryEditorPage();
 
 	        loginPage=new LoginPage();
 	    	loginPage.clickGetStarted();
@@ -47,103 +47,53 @@ public class ArrayTest extends BaseTest{
 	        loginPage.successfulLogin();
 	            
 	    }
-	    @Test
+	    @Test(priority = 1)
 	   public void clickArrayModule() {
-		   arrayPage.clickGetStartesArr();
+		    arrayPage.clickGetStartesArr();
 	        arrayPage.clickArraysInPython();
 	        arrayPage.clickArraysUsingList();
 	        arrayPage.clickBasicOperationsInLists();
 	        arrayPage.clickApplicationsOfArray();
 	    }
 	        
-	 /*  }
-	   public void clickArrayUsingList() {
-		   arrayPage.clickGetStartesArr();
-	        arrayPage.clickArraysUsingList();
-	   }
-	   public void clickBasicoperations() {
-		   arrayPage.clickGetStartesArr();
-	        arrayPage.clickBasicOperationsInLists();
-	   }
-	   public void clickApplicationsofArray() {
-		   arrayPage.clickGetStartesArr();
-	        arrayPage.clickApplicationsOfArray();
-	   }*/
-	  /*  public void setupPages() {
-	        //loginPage = new LoginPage(getDriver()); 
-	        //arrayPage = new ArrayPage(getDriver());
-	    	loginPage.clickGetStarted();
-	        loginPage.clickSignIn();
-	        loginPage.login(
-	            ConfigReader.getProperty("username"),
-	            ConfigReader.getProperty("password")
-	        );
-	    }*/
+	 
 
-
-	    @Test(priority = 1)
+	    @Test(priority = 2)
 	    public void verifyArrayNavigation() {
 	        arrayPage.clickGetStartesArr();
 	        arrayPage.clickArraysInPython();
+	        arrayPage.clickTryHere();
 	    }
-	  /*  @DataProvider(name = "codeProvider")
-	    public Object[][] codeData() {
-	        return new Object[][] {
-	            {"print('Hello Array')"},
-	            {"print('Test 123')"},
-	            {"print(2+3)"}
-	        };}*/
-	   
+	    @Test(priority = 3)
+	    public void verifyUsingList() {
+	        arrayPage.clickGetStartesArr();
+	        arrayPage.clickArraysUsingList();
+	        arrayPage.clickTryHere();
+	    }
+	    @Test(priority = 4)
+	    public void verifyBasicOperations() {
+	        arrayPage.clickGetStartesArr();
+	        arrayPage.clickBasicOperationsInLists();
+	        arrayPage.clickTryHere();
+	    }
+	    @Test(priority = 5)
+	    public void verifyApplicationofArray() {
+	        arrayPage.clickGetStartesArr();
+	        arrayPage.clickApplicationsOfArray();
+	        arrayPage.clickTryHere();
+	    }
 	    
-	    @Test(dataProvider = "codeProvider")
-	    public void runCodeTest(String code) {
-	    	arrayPage.clickGetStartesArr();
-	        arrayPage.clickArraysInPython();
-	        arrayPage.clickTryHere();
-	        arrayPage.enterCodeInEditor(code);
-	        arrayPage.clickRunButton();
-
-	        String result = arrayPage.getOutput();
-	        System.out.println("Result: " + result);
-	    }
-	   /* @Test(priority = 2)
-	    public void verifyTryEditorRun() {
-	    	arrayPage.clickGetStartesArr();
-	        arrayPage.clickArraysInPython();
-	        arrayPage.clickTryHere();
-
-	        String code = "print('Hello Array')";
-	        arrayPage.enterCodeInEditor(code);
-	        arrayPage.clickRunButton();
-
-	        String result = arrayPage.getOutput();
-	        System.out.println("Result: " + result);
-	    }*/
-	    //@Test(dataProvider = "codeProvider")
-	   
-	 /* @DataProvider(name = "arrayCodeProvider")
-	    public Object[][] getArrayData() {
-	        Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
-	        Object[][] data = new Object[arrayData.size()][3];
-	        int i = 0;
-	        for (String testCase : arrayData.keySet()) {
-	            data[i][0] = testCase;
-	            data[i][1] = arrayData.get(testCase).get("Code");
-	            data[i][2] = arrayData.get(testCase).get("ExpectedOutput");
-	            i++;
-	        }
-	        return data;
-	    }*/
-
-	  @Test(dataProvider = "arrayPracticeData",dataProviderClass = utilities.TestDataProvider.class)
-	  // @Test(dataProvider = "codeProvider", dataProviderClass = utilities.DataProvider1.class)
+	   //=========================Excel Data[ArrayDATA]=======================
+	    
+	    
+	  @Test(dataProvider = "arrayPracticeData",dataProviderClass = utilities.TestDataProvider.class,priority = 6)
 
 	    public void runArrayCodeTests(String testCaseName, String code, String expectedOutput) {
 		 
 		 
-		      System.out.println("Running test");
+		    System.out.println("Running TRY HERE test");
 		  
-		  arrayPage.clickGetStartesArr();
+		    arrayPage.clickGetStartesArr();
 	        arrayPage.clickArraysInPython();
 	        arrayPage.clickTryHere();
 	        arrayPage.enterCodeInEditor(code);
@@ -154,9 +104,9 @@ public class ArrayTest extends BaseTest{
 
 	        Assert.assertEquals(actualOutput, expectedOutput);
 	    }
-	  @Test(dataProvider = "ArrayPracticeQuestions",dataProviderClass = utilities.TestDataProvider.class)
-	 // @Test(dataProvider = "arrayPracticeData1" ,dataProviderClass = utilities.DataProvider1.class)
-
+	  //==========================TestDataProvider PRACTICE QUESTIONS
+	  
+	  @Test(dataProvider = "ArrayPracticeQuestions",dataProviderClass = utilities.TestDataProvider.class,priority = 7)
 	  public void RunPracticeQuestions(String Questions) {
 		  arrayPage.clickGetStartesArr();
 
@@ -170,49 +120,61 @@ public class ArrayTest extends BaseTest{
 	        Assert.assertEquals(ExpectedTitle,actualTitle);
 	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
 	  }
-	  @Test(dataProvider = "arrayPracticeData1" ,dataProviderClass = utilities.TestDataProvider.class)
-	  //@Test(dataProvider = "ArrayPracticeQuestions",dataProviderClass = utilities.DataProvider1.class)
+	  //======================Excel Submit button verify============
+	  
+	  @Test(dataProvider = "arrayData1" ,dataProviderClass = utilities.TestDataProvider.class,priority = 8)
 
 	  public void SubmitPracticeQuestions(String testcaseName,String Questions,String pythonCode,String expectedOutput) {
 		  arrayPage.clickGetStartesArr();
 
 		  arrayPage.clickArraysInPython();
           arrayPage.clickPracticeQuestions();
-          arrayPage.clickSearchTheArray();
-          //arrayPage.clickQuestion(Questions); 
+          //arrayPage.clickSearchTheArray();
+          arrayPage.clickQuestion(Questions); 
           arrayPage.clearEdit();
           
-          tryEditorPage.enterCode(pythonCode); 
-          tryEditorPage.submit();
+          arrayPage.enterCodeInEditor(pythonCode); 
+         arrayPage.submit();//Error occurred during submission
+         String ExpectedTitle="Error occurred during submission";
+
+         String actualTitle =arrayPage.getResultAfterSubmit();
+	        Assert.assertEquals(ExpectedTitle,actualTitle);
+	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+	  
+	  } 
+	  
+	  //======================Excel Run button verify============
+
+	  @Test(dataProvider = "arrayData1" ,dataProviderClass = utilities.TestDataProvider.class,priority = 9)
+
+	  public void RunBTNPracticeQuestions(String testcaseName,String Questions,String pythonCode,String expectedOutput) {
+		  arrayPage.clickGetStartesArr();
+
+		  arrayPage.clickArraysInPython();
+          arrayPage.clickPracticeQuestions();
+          //arrayPage.clickSearchTheArray();
+          arrayPage.clickQuestion(Questions); 
+          arrayPage.clearEdit();
+          
+          arrayPage.enterCodeInEditor(pythonCode); 
+         arrayPage.clickRunButton();
+         String ExpectedTitle=expectedOutput;
+
+         String actualTitle =arrayPage.getTryEditorResult();
+         Assert.assertEquals(actualTitle.trim().toLowerCase(), ExpectedTitle.trim().toLowerCase());
+	       // Assert.assertEquals(ExpectedTitle,actualTitle);
+	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
 	  
 	  }
-	  
-	   /* @Test(priority = 3)
-	 public void verifyPracticeQuestion() {
-	        Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
-	        String[] codes=null;
-	    	for (String code : codes) {
-	    	    arrayPage.enterCodeInEditor(code);
-	    	    arrayPage.clickRunButton();
-	    	}
-	        arrayPage.clickPracticeQuestions();
-	        arrayPage.clickSearchTheArray();
-
-	        arrayPage.clickTryHere();
-	        arrayPage.enterCodeInEditor("print('Search')");
-	        arrayPage.clickRunButton();
-
-	        String result = arrayPage.getOutput();
-	        System.out.println("Practice Output: " + result);
-	    }*/
+	   
 
 	  @AfterMethod
 	  public void tearDown() {
-	      if (driver != null) {
-	          driver.quit();
+	    if (driver != null) {
+	    driver.quit();
 	      }
 	  }
 
-	}
+}
 
 
