@@ -10,12 +10,14 @@ package pageObjects;
 	import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.interactions.Actions;
 
+import factory.DriverFactory;
+
 	public class TryEditorPage {
 
 	    WebDriver driver;
 
-	    public TryEditorPage(WebDriver driver) {
-	        this.driver = driver;
+	    public TryEditorPage() {
+	        this.driver = DriverFactory.getDriver();
 	    }
 
 	    // Locators
