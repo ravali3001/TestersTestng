@@ -8,7 +8,7 @@
           <include name="tearDown"/>
           <include name="setup"/>
           <include name="baseSetup"/>
-          <include name="verifyLoginButtonEnable"/>
+          <include name="verifyInvalidLoginErrorMsg" invocation-numbers="0"/>
         </methods>
       </class> <!-- testSuite.LoginTest -->
     </classes>

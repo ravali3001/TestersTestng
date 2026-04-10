@@ -1,21 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="7" total="8" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="8" passed="7" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-07T13:41:53 EDT" name="Default suite" finished-at="2026-04-07T13:42:09 EDT" duration-ms="15581">
+  <suite started-at="2026-04-08T22:34:51 EDT" name="Suite" finished-at="2026-04-08T22:36:32 EDT" duration-ms="100720">
     <groups>
     </groups>
-    <test started-at="2026-04-07T13:41:53 EDT" name="Default test" finished-at="2026-04-07T13:42:09 EDT" duration-ms="15581">
+    <test started-at="2026-04-08T22:34:51 EDT" name="ChromeTests" finished-at="2026-04-08T22:36:32 EDT" duration-ms="100720">
       <class name="testSuite.LoginTest">
-        <test-method is-config="true" signature="baseSetup()[pri:0, instance:testSuite.LoginTest@4f936da8]" started-at="2026-04-07T13:41:54 EDT" name="baseSetup" finished-at="2026-04-07T13:42:03 EDT" duration-ms="8768" status="PASS">
+        <test-method is-config="true" signature="baseSetup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:34:52 EDT" name="baseSetup" finished-at="2026-04-08T22:35:00 EDT" duration-ms="8209" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- baseSetup -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:testSuite.LoginTest@4f936da8]" started-at="2026-04-07T13:42:03 EDT" name="setup" finished-at="2026-04-07T13:42:07 EDT" depends-on-methods="base.BaseTest.baseSetup" duration-ms="4133" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:00 EDT" name="setup" finished-at="2026-04-08T22:35:04 EDT" depends-on-methods="base.BaseTest.baseSetup" duration-ms="3835" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyInvalidLoginErrorMsg(java.util.Map)[pri:7, instance:testSuite.LoginTest@4f936da8]" started-at="2026-04-07T13:42:07 EDT" name="verifyInvalidLoginErrorMsg" data-provider="invalidLogin" finished-at="2026-04-07T13:42:09 EDT" duration-ms="1703" status="PASS">
+        <test-method signature="testValidLogin(java.util.Map)[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:04 EDT" name="testValidLogin" data-provider="validLogin" finished-at="2026-04-08T22:35:07 EDT" duration-ms="3134" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Username=Test_01, ExpectedResult=Success, Password=Sdet@2025}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidLogin -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:07 EDT" name="tearDown" finished-at="2026-04-08T22:35:07 EDT" duration-ms="106" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="baseSetup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:08 EDT" name="baseSetup" finished-at="2026-04-08T22:35:14 EDT" duration-ms="6442" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseSetup -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:14 EDT" name="setup" finished-at="2026-04-08T22:35:18 EDT" depends-on-methods="base.BaseTest.baseSetup" duration-ms="3796" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testInvalidLogin(java.util.Map)[pri:1, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:18 EDT" name="testInvalidLogin" data-provider="invalidLogin" finished-at="2026-04-08T22:35:20 EDT" duration-ms="1895" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -25,12 +48,170 @@
           </params>
           <reporter-output>
           </reporter-output>
+        </test-method> <!-- testInvalidLogin -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:20 EDT" name="tearDown" finished-at="2026-04-08T22:35:20 EDT" duration-ms="91" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="baseSetup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:20 EDT" name="baseSetup" finished-at="2026-04-08T22:35:26 EDT" duration-ms="6365" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseSetup -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:26 EDT" name="setup" finished-at="2026-04-08T22:35:30 EDT" depends-on-methods="base.BaseTest.baseSetup" duration-ms="3650" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testinvalidUsername(java.util.Map)[pri:2, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:30 EDT" name="testinvalidUsername" data-provider="invalidUsername" finished-at="2026-04-08T22:35:32 EDT" duration-ms="2025" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Username=wrongUser, ExpectedResult=Failure, Password=Sdet@2025}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testinvalidUsername -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:32 EDT" name="tearDown" finished-at="2026-04-08T22:35:32 EDT" duration-ms="90" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="baseSetup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:32 EDT" name="baseSetup" finished-at="2026-04-08T22:35:39 EDT" duration-ms="6375" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseSetup -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:39 EDT" name="setup" finished-at="2026-04-08T22:35:42 EDT" depends-on-methods="base.BaseTest.baseSetup" duration-ms="3827" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testinvalidPassword(java.util.Map)[pri:3, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:42 EDT" name="testinvalidPassword" data-provider="invalidPassword" finished-at="2026-04-08T22:35:44 EDT" duration-ms="1807" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Username=Test_01, ExpectedResult=Failure, Password=wrong123}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testinvalidPassword -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:44 EDT" name="tearDown" finished-at="2026-04-08T22:35:44 EDT" duration-ms="91" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="baseSetup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:44 EDT" name="baseSetup" finished-at="2026-04-08T22:35:51 EDT" duration-ms="6377" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseSetup -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:51 EDT" name="setup" finished-at="2026-04-08T22:35:54 EDT" depends-on-methods="base.BaseTest.baseSetup" duration-ms="3753" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyLoginPerformance()[pri:4, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:54 EDT" name="verifyLoginPerformance" finished-at="2026-04-08T22:35:57 EDT" duration-ms="2948" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLoginPerformance -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:57 EDT" name="tearDown" finished-at="2026-04-08T22:35:57 EDT" duration-ms="88" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="baseSetup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:35:58 EDT" name="baseSetup" finished-at="2026-04-08T22:36:04 EDT" duration-ms="6308" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseSetup -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:04 EDT" name="setup" finished-at="2026-04-08T22:36:08 EDT" depends-on-methods="base.BaseTest.baseSetup" duration-ms="3740" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyLoginButtonEnable(java.util.Map)[pri:5, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:08 EDT" name="verifyLoginButtonEnable" data-provider="validLogin" finished-at="2026-04-08T22:36:09 EDT" duration-ms="1069" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Username=Test_01, ExpectedResult=Success, Password=Sdet@2025}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLoginButtonEnable -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:09 EDT" name="tearDown" finished-at="2026-04-08T22:36:09 EDT" duration-ms="91" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="baseSetup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:09 EDT" name="baseSetup" finished-at="2026-04-08T22:36:15 EDT" duration-ms="6440" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseSetup -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:15 EDT" name="setup" finished-at="2026-04-08T22:36:19 EDT" depends-on-methods="base.BaseTest.baseSetup" duration-ms="3853" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyPasswordIsMasked()[pri:6, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:19 EDT" name="verifyPasswordIsMasked" finished-at="2026-04-08T22:36:20 EDT" duration-ms="766" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPasswordIsMasked -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:20 EDT" name="tearDown" finished-at="2026-04-08T22:36:20 EDT" duration-ms="83" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="baseSetup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:20 EDT" name="baseSetup" finished-at="2026-04-08T22:36:26 EDT" duration-ms="6346" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- baseSetup -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:26 EDT" name="setup" finished-at="2026-04-08T22:36:30 EDT" depends-on-methods="base.BaseTest.baseSetup" duration-ms="3769" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyInvalidLoginErrorMsg(java.util.Map)[pri:7, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:30 EDT" name="verifyInvalidLoginErrorMsg" data-provider="invalidLogin" finished-at="2026-04-08T22:36:32 EDT" duration-ms="1884" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{Username=wrongUser, ExpectedResult=Failure, Password=wrong123}]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [false] but found [true]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [false] but found [true]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertFalse(Assert.java:79)
+at org.testng.Assert.assertFalse(Assert.java:89)
+at testSuite.LoginTest.verifyInvalidLoginErrorMsg(LoginTest.java:106)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+at java.base/java.lang.Thread.run(Thread.java:1570)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
         </test-method> <!-- verifyInvalidLoginErrorMsg -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testSuite.LoginTest@4f936da8]" started-at="2026-04-07T13:42:09 EDT" name="tearDown" finished-at="2026-04-07T13:42:09 EDT" duration-ms="107" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testSuite.LoginTest@70dd7e15]" started-at="2026-04-08T22:36:32 EDT" name="tearDown" finished-at="2026-04-08T22:36:32 EDT" duration-ms="85" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- testSuite.LoginTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- ChromeTests -->
+  </suite> <!-- Suite -->
 </testng-results>
