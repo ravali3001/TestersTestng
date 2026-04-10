@@ -60,7 +60,12 @@ import org.openqa.selenium.Alert;
 				break;
 			}
 		}
-
+public void graphLink() {
+	driver.findElement(graphLink).click();
+}
+public void graphReprasentation() {
+	driver.findElement(graphrePresentations).click();
+}	
 		public String getPageTitle() {
 			String title = driver.getTitle();
 			return title;
