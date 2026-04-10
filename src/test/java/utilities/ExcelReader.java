@@ -11,15 +11,17 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExcelReader {
+public class ExcelReader {  
+
 	
 
     public static Map<String, Map<String, String>> getDataForSheet(String sheetName) {
 
+
         Map<String, Map<String, String>> dataMap = new HashMap<>();
 
         try {
-        	String testDataFilePath = ConfigReader.getProperty("test_data_file_path");
+        	String testDataFilePath = ConfigReader.getProperty("test_data_file_path"); 
             FileInputStream fis = new FileInputStream(testDataFilePath);
 
             Workbook workbook = new XSSFWorkbook(fis);
@@ -76,8 +78,8 @@ public class ExcelReader {
     	return getDataForSheet(ConfigReader.getProperty("editor_data_sheet_name"));
     }
     public static Map<String, Map<String, String>> getArraydataData() {
-    	return getDataForSheet(ConfigReader.getProperty("ArrayData_data_sheet_name"));
-    }
+    	return getDataForSheet(ConfigReader.getProperty("Array_data_sheet_name"));
+    } 
 
     public static Map<String, Map<String, String>> getArrayTryData() {
     	return getDataForSheet(ConfigReader.getProperty("ArrayTry_data_sheet_name"));
@@ -103,4 +105,5 @@ public class ExcelReader {
                 return "";
         }
     }
+
 }

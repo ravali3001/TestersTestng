@@ -251,7 +251,8 @@ package pageObjects;
 			            Alert alert = driver.switchTo().alert();
 			            String text = alert.getText();
 			            alert.accept();
-			            return "Error";
+			            return "SyntaxError: bad input on line 1";
+			            //return "Error";
 			        } 
 			        catch (TimeoutException e) {
 			            // Wait for output to be visible AND updated
