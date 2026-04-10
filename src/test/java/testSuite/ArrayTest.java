@@ -44,7 +44,7 @@ public class ArrayTest extends BaseTest{
             driver = DriverFactory.getDriver(); // or new ChromeDriver()
 
 	        arrayPage = new ArrayPage(driver);
-		  	 tryEditorPage = new TryEditorPage();
+		  	 tryEditorPage = new TryEditorPage(driver);
 
 	        loginPage=new LoginPage();
 	    	loginPage.clickGetStarted();
