@@ -4,12 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import factory.DriverFactory;
+
 public class QueuePage {
 
     private WebDriver driver;
 
-    public QueuePage(WebDriver driver) {
-        this.driver = driver;
+    public QueuePage() {
+    	this.driver = DriverFactory.getDriver();
     }
 
     // ---------------- Locators ----------------

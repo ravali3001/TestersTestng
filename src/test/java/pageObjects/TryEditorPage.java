@@ -11,16 +11,20 @@ package pageObjects;
 	import org.openqa.selenium.interactions.Actions;
 
 import factory.DriverFactory;
+
 import utilities.ConfigReader;
+
+
 
 	public class TryEditorPage {
 
 	    WebDriver driver;
 
 	    public TryEditorPage() {
+
 	    	this.driver = DriverFactory.getDriver();
 		       
-	    	ConfigReader.loadConfig();
+ 
 	    }
 
 	    // Locators

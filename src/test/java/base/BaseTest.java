@@ -2,11 +2,14 @@ package base;
 
 import org.testng.annotations.*;
 import factory.DriverFactory;
+import pageObjects.LoginPage;
 import utilities.ConfigReader;
 import org.openqa.selenium.WebDriver;
 
 
 public class BaseTest {
+	
+	LoginPage loginPage;
 
     @BeforeMethod(alwaysRun = true)
     public void baseSetup() {
@@ -17,6 +20,14 @@ public class BaseTest {
             throw new RuntimeException("baseUrl not found in config.properties");
         }
         DriverFactory.getDriver().get(url);
+    }
+
+    @BeforeMethod()
+    public void dsAlgoLogin() {
+    	loginPage = new LoginPage();
+		loginPage.clickGetStarted();
+		loginPage.clickSignIn();
+		loginPage.successfulLogin();
     }
 
     @AfterMethod(alwaysRun = true)

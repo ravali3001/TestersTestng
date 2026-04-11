@@ -3,12 +3,14 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import factory.DriverFactory;
+
 public class StackPage {
 
-    WebDriver driver;
+    public WebDriver driver;
 
-    public StackPage(WebDriver driver) {
-        this.driver = driver;
+    public StackPage() {
+    	this.driver = DriverFactory.getDriver();
     }
 
     // Locators
