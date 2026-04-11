@@ -28,7 +28,6 @@ public class ArrayTest extends BaseTest{
 	    TryEditorPage tryEditorPage;
         Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
         Map<String, Map<String, String>> arrayData1 = ExcelReader.getArrayTryData();
-       // arrayPage = new ArrayPage(DriverFactory.getDriver());
 
         private static final Logger logger = LogManager.getLogger(ArrayTest.class); 
 
@@ -36,11 +35,10 @@ public class ArrayTest extends BaseTest{
 	  	    
 	    public void setup() {
 	       
-            driver = DriverFactory.getDriver(); // or new ChromeDriver()
+            driver = DriverFactory.getDriver(); 
 
 	        arrayPage = new ArrayPage(driver);
-		    tryEditorPage = new TryEditorPage();
-
+		    tryEditorPage = new TryEditorPage(); 
 	        loginPage=new LoginPage();
 	    	loginPage.clickGetStarted();
 	        loginPage.clickSignIn();
@@ -62,25 +60,48 @@ public class ArrayTest extends BaseTest{
 	    public void verifyArrayNavigation() {
 	        arrayPage.clickGetStartesArr();
 	        arrayPage.clickArraysInPython();
+	        String expectedTitle= "Arrays in Python";
+	        String actualTitle =  arrayPage.getPageTitle();  
+		    Assert.assertEquals(actualTitle, expectedTitle);
+			logger.info("*********EXPECTED TITLE********* {} ,{} ,{} ", expectedTitle,"******ACTUAL TITLE******",actualTitle);
+
 	        arrayPage.clickTryHere();
 	    }
 	    @Test(priority = 3)
 	    public void verifyUsingList() {
 	        arrayPage.clickGetStartesArr();
 	        arrayPage.clickArraysUsingList();
+	        String expectedTitle= "Arrays Using List";
+	        String actualTitle =  arrayPage.getPageTitle();  
+		    Assert.assertEquals(actualTitle, expectedTitle);
+			logger.info("*********EXPECTED TITLE********* {} ,{} ,{} ", expectedTitle,"******ACTUAL TITLE******",actualTitle);
+
+	        
 	        arrayPage.clickTryHere();
+	        
 	    }
 	    @Test(priority = 4)
 	    public void verifyBasicOperations() {
 	        arrayPage.clickGetStartesArr();
 	        arrayPage.clickBasicOperationsInLists();
+	        String expectedTitle= "Basic Operations in Lists";
+	        String actualTitle =  arrayPage.getPageTitle();  
+		    Assert.assertEquals(actualTitle, expectedTitle);
+			logger.info("*********EXPECTED TITLE********* {} ,{} ,{} ", expectedTitle,"******ACTUAL TITLE******",actualTitle);
+
 	        arrayPage.clickTryHere();
 	    }
 	    @Test(priority = 5)
 	    public void verifyApplicationofArray() {
 	        arrayPage.clickGetStartesArr();
 	        arrayPage.clickApplicationsOfArray();
+	        String expectedTitle= "Applications of Array";
+	        String actualTitle =  arrayPage.getPageTitle();  
+		    Assert.assertEquals(actualTitle, expectedTitle);
+			logger.info("*********EXPECTED TITLE********* {} ,{} ,{} ", expectedTitle,"******ACTUAL TITLE******",actualTitle);
+
 	        arrayPage.clickTryHere();
+	        
 	    }
 	    
 	   //=========================Excel Data[ArrayDATA]=======================
@@ -91,7 +112,7 @@ public class ArrayTest extends BaseTest{
 	    public void runArrayCodeTests(String testCaseName, String code, String expectedOutput) {
 		 
 		 
-		    System.out.println("Running TRY HERE test");
+		   logger.info("Running TRY HERE test");
 		  
 		    arrayPage.clickGetStartesArr();
 	        arrayPage.clickArraysInPython();
@@ -170,9 +191,9 @@ public class ArrayTest extends BaseTest{
 
 	  @AfterMethod
 	  public void tearDown() {
-	    if (driver != null) {
-	    driver.quit();
-	      }
+	   if (driver != null) {
+	       driver.quit();
+	  }
 	  }
 
 }
