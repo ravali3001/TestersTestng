@@ -31,7 +31,7 @@ import utilities.ConfigReader;
 
 
 	    public void enterCodeTest(String code) {
-	        //driver.findElement(codeTextArea).clear();
+	      driver.findElement(codeTextArea).clear();
 	        driver.findElement(codeTextArea).click();//sendKeys(code);
 	    }
 
