@@ -17,7 +17,7 @@ import pageObjects.LoginPage;
 //import utilities.ConfigReader;
 import utilities.ExcelReader;
 
-public class DataStructuresTest extends BaseTest {
+public class DataStructuresTest extends BaseTest{
 	
 
     WebDriver driver;
@@ -29,15 +29,11 @@ public class DataStructuresTest extends BaseTest {
 
    @BeforeMethod(dependsOnMethods = {"baseSetup"})
    public void setup() {
+	   
 	   driver = DriverFactory.getDriver(); 
-       //DriverFactory.initDriver();  
-       
-       DSintro= new DataStructuresPages(driver);
-             loginPage=new LoginPage();
-   	loginPage.clickGetStarted();
-       loginPage.clickSignIn();
-       loginPage.successfulLogin();
-      
+       DSintro= new DataStructuresPages();
+      logger.info("*****SUCCESSFULL LOGIN******"); 
+  
    }
    
     @Test

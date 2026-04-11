@@ -20,14 +20,17 @@ package pageObjects;
 	import org.openqa.selenium.support.ui.ExpectedConditions;
 	import org.openqa.selenium.support.ui.WebDriverWait;
 
+import factory.DriverFactory;
+
 
 	public class ArrayPage {
 
 	    private static final Logger logger = LogManager.getLogger(ArrayPage.class); 
-
-	          public ArrayPage(WebDriver driver) {  
-	                   this.driver = driver;
-	                   
+	    WebDriver driver;
+	          public ArrayPage() {  
+	                   //this.driver = driver; 
+	          	this.driver = DriverFactory.getDriver();
+ 
 	          }        
 
 	    private By getStartedBtn = By.xpath("//button[text()='Get Started']");
@@ -56,7 +59,7 @@ package pageObjects;
 	    
 		         By editor=By.xpath("//form[@id='answer_form']/div/div/div/textarea"); 
 		         
-			     WebDriver driver;
+			     
 				 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			    
 	            public void clickGetStartesArr() {

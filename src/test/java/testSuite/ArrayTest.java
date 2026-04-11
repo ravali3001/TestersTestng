@@ -8,7 +8,7 @@ import org.testng.annotations.*;
 
 import base.BaseTest;
 import factory.DriverFactory;
-import pageObjects.ArrayPage;
+import pageObjects.ArrayPage; 
 import pageObjects.LoginPage;
 import pageObjects.TryEditorPage;
 
@@ -34,8 +34,8 @@ public class ArrayTest extends BaseTest{
         @BeforeMethod(dependsOnMethods = {"baseSetup"})
          public void setup() {
 	       
-            driver = DriverFactory.getDriver(); 
-	        arrayPage = new ArrayPage(driver);
+            driver = DriverFactory.getDriver();  
+	        arrayPage = new ArrayPage(); 
 		    tryEditorPage = new TryEditorPage(); 
 	       // loginPage=new LoginPage();
 	    	//loginPage.clickGetStarted();

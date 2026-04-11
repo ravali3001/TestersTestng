@@ -14,10 +14,10 @@ import base.BaseTest;
 import factory.DriverFactory;
 import pageObjects.HomePages;
 import pageObjects.LoginPage;
-
+import utilities.ConfigReader;
 import utilities.ExcelReader;
 
-public class HomeTest extends BaseTest{
+public class HomeTest {
 	 private static final Logger logger = LogManager.getLogger(HomeTest.class); 
 
 	WebDriver driver;
@@ -25,15 +25,20 @@ public class HomeTest extends BaseTest{
     LoginPage loginPage;
     Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
 
-    @BeforeMethod(dependsOnMethods = {"baseSetup"})
+  
+    @BeforeMethod
     public void setup() {
-    	driver = DriverFactory.getDriver();
-      HomeDS= new HomePages(driver);
-      loginPage=new LoginPage();
-      loginPage.clickGetStarted();
-       
-   }
+        DriverFactory.initDriver();
+        loginPage=new LoginPage();
+        DriverFactory.getDriver().get(ConfigReader.getProperty("url"));
+        HomeDS= new HomePages();
+        loginPage.clickGetStarted();
+        
+        
+    }
    
+   
+  
    //===========================Verify Register link=========================
    
    @Test

@@ -10,14 +10,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePages {
+import factory.DriverFactory;
+import utilities.ConfigReader;
+
+public class HomePages { 
 	WebDriver driver;
 	 WebDriverWait wait;
 	
 	 private static final Logger logger = LogManager.getLogger(HomePages.class); 
 
-	public HomePages(WebDriver driver) { 
-	      this.driver = driver;
+	public HomePages() { 
+	     // this.driver = driver;
+    	this.driver = DriverFactory.getDriver();
+
 	      this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
@@ -43,7 +48,10 @@ public class HomePages {
 		  //Actions action = new Actions(driver);
 		
 
-    
+  public void openPortal(String url) {
+      driver.get(ConfigReader.getProperty("url"));
+  }
+
  public void clickLaunchStartR() { 
 	  driver.findElement(LaunchGetstart).click(); 
 	  
