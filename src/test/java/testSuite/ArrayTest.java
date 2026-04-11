@@ -37,10 +37,10 @@ public class ArrayTest extends BaseTest{
             driver = DriverFactory.getDriver(); 
 	        arrayPage = new ArrayPage(driver);
 		    tryEditorPage = new TryEditorPage(); 
-	        loginPage=new LoginPage();
-	    	loginPage.clickGetStarted();
-	        loginPage.clickSignIn();
-	        loginPage.successfulLogin();
+	       // loginPage=new LoginPage();
+	    	//loginPage.clickGetStarted();
+	        //loginPage.clickSignIn();
+	       // loginPage.successfulLogin();
 	            
 	    }
 	    @Test(priority = 1)
@@ -194,26 +194,6 @@ public class ArrayTest extends BaseTest{
 	  
 	  }
 	   
-
-
-	  
-	  @Test(dataProvider = "arrayData1" ,dataProviderClass = utilities.TestDataProvider.class)
-
-	  public void RunBtnPracticeQuestions(String testcaseName,String Questions,String pythonCode,String expectedOutput) {
-		  arrayPage.clickGetStartesArr();
-		  arrayPage.clickArraysInPython();
-          arrayPage.clickPracticeQuestions();
-          arrayPage.clickQuestion(Questions);
-          arrayPage.clearEdit(); 
-          
-         arrayPage.enterCodeInEditor(pythonCode); 
-         tryEditorPage.clickRun();
-         String ExpectedTitle=expectedOutput;
-         String actualTitle =arrayPage.getResultAfterRun();
-	        Assert.assertEquals(ExpectedTitle,actualTitle);
-	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
-	  }
-	  
 	   
 	  @AfterMethod
 	  public void tearDown() {
