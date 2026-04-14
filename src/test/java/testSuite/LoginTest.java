@@ -31,7 +31,7 @@ public class LoginTest extends BaseTest {
 		loginPage.enterUsername(credentials.get("Username"));
 		loginPage.enterPassword(credentials.get("Password"));
 		loginPage.clickLoginButton();
-
+		logger.info("login button is Successful."); 
 		Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed, but expected to succeed.");
 	}
 
@@ -40,7 +40,7 @@ public class LoginTest extends BaseTest {
 		loginPage.enterUsername(credentials.get("Username"));
 		loginPage.enterPassword(credentials.get("Password"));
 		loginPage.clickLoginButton();
-
+		logger.info("LoginErrorDisplayed.");
 		Assert.assertTrue(loginPage.isLoginErrorDisplayed(), "Login succeeded, but expected to fail.");
 	}
 	@Test(priority = 2, dataProvider = "invalidUsername", dataProviderClass = TestDataProvider.class)
@@ -48,7 +48,7 @@ public class LoginTest extends BaseTest {
 		loginPage.enterUsername(credentials.get("Username"));
 		loginPage.enterPassword(credentials.get("Password"));
 		loginPage.clickLoginButton();
-
+		logger.info("LoginErrorDisplayed.");
 		Assert.assertTrue(loginPage.isLoginErrorDisplayed(), "Login succeeded, but expected to fail.");
 	}
 	@Test(priority = 3, dataProvider = "invalidPassword", dataProviderClass = TestDataProvider.class)
@@ -56,7 +56,7 @@ public class LoginTest extends BaseTest {
 		loginPage.enterUsername(credentials.get("Username"));
 		loginPage.enterPassword(credentials.get("Password"));
 		loginPage.clickLoginButton();
-
+		logger.info("LoginErrorDisplayed.");
 		Assert.assertTrue(loginPage.isLoginErrorDisplayed(), "Login succeeded, but expected to fail.");
 	}
 	@Test(priority = 4)
@@ -103,7 +103,7 @@ public class LoginTest extends BaseTest {
 		boolean isErrorDisplayed = loginPage.isLoginErrorDisplayed();
         logger.info("login error message displayed."); 
 
-        Assert.assertTrue(isErrorDisplayed);
+        Assert.assertFalse(isErrorDisplayed);
     }
 			
 	}

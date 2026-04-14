@@ -20,6 +20,10 @@ public class LoginPage {
   
     public LoginPage() {
     	this.driver = DriverFactory.getDriver();
+ 
+    	//this.driver=driver;
+       
+
     	ConfigReader.loadConfig();
     }
 
@@ -78,7 +82,7 @@ public class LoginPage {
 
     /** Verify login error is displayed */
     public boolean isLoginErrorDisplayed() {
-        return driver.findElements(errorMsg).size() > 0;
+        return driver.findElements(errorMsg).size() > 0;  
     }
     
     public void successfulLogin() {
@@ -105,5 +109,12 @@ public class LoginPage {
     public String getPasswordFieldType() {
         return driver.findElement(passwordField).getAttribute("type");
     }
+    public void login(String username, String password) {
+        enterUsername(username);
+        enterPassword(password);
+        clickLoginButton();
+    }
 
+	
+    
 }

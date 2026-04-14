@@ -1,2 +1,13 @@
+<<<<<<< HEAD
 target/
 test-output/
+=======
+/target/
+target/
+test-output/
+logs/
+*.html
+*.xml
+.DS_Store
+chaintestreport/
+>>>>>>> 1d8db1e7b34b86425a5a297ba1d8fc8a056fdd2c
