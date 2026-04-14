@@ -19,7 +19,7 @@ public class GraphTest extends BaseTest  {
 	public void setup() {
 		 driver = DriverFactory.getDriver();
 	    graphPage = new GraphTestPage(driver); 
-		loginPage = new LoginPage();
+        loginPage = new LoginPage();
 		loginPage.clickGetStarted();
 		loginPage.clickSignIn();
 		loginPage.successfulLogin();
