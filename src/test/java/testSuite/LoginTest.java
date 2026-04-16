@@ -12,18 +12,15 @@ import utilities.TestDataProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 public class LoginTest extends BaseTest {
-	
+
 	private static final Logger logger = LogManager.getLogger(LoginTest.class);
-	
+
 	private LoginPage loginPage;
 
-	@BeforeMethod(dependsOnMethods = {"baseSetup"})
+	@BeforeMethod(dependsOnMethods = { "baseSetup", "dsAlgoLogin" })
 	public void setup() {
 		loginPage = new LoginPage();
-		loginPage.clickGetStarted();
-		loginPage.clickSignIn();
 	}
 
 	@Test(priority = 0, dataProvider = "validLogin", dataProviderClass = TestDataProvider.class)
@@ -31,7 +28,7 @@ public class LoginTest extends BaseTest {
 		loginPage.enterUsername(credentials.get("Username"));
 		loginPage.enterPassword(credentials.get("Password"));
 		loginPage.clickLoginButton();
-		logger.info("login button is Successful."); 
+		logger.info("login button is Successful.");
 		Assert.assertTrue(loginPage.isLoginSuccessful(), "Login failed, but expected to succeed.");
 	}
 
@@ -43,6 +40,7 @@ public class LoginTest extends BaseTest {
 		logger.info("LoginErrorDisplayed.");
 		Assert.assertTrue(loginPage.isLoginErrorDisplayed(), "Login succeeded, but expected to fail.");
 	}
+
 	@Test(priority = 2, dataProvider = "invalidUsername", dataProviderClass = TestDataProvider.class)
 	public void testinvalidUsername(Map<String, String> credentials) {
 		loginPage.enterUsername(credentials.get("Username"));
@@ -51,6 +49,7 @@ public class LoginTest extends BaseTest {
 		logger.info("LoginErrorDisplayed.");
 		Assert.assertTrue(loginPage.isLoginErrorDisplayed(), "Login succeeded, but expected to fail.");
 	}
+
 	@Test(priority = 3, dataProvider = "invalidPassword", dataProviderClass = TestDataProvider.class)
 	public void testinvalidPassword(Map<String, String> credentials) {
 		loginPage.enterUsername(credentials.get("Username"));
@@ -59,54 +58,53 @@ public class LoginTest extends BaseTest {
 		logger.info("LoginErrorDisplayed.");
 		Assert.assertTrue(loginPage.isLoginErrorDisplayed(), "Login succeeded, but expected to fail.");
 	}
+
 	@Test(priority = 4)
 	public void verifyLoginPerformance() {
 		long startTime;
-	    long endTime;
-	    int maxSeconds= 5;
+		long endTime;
+		int maxSeconds = 5;
 		startTime = System.currentTimeMillis();
-   	 loginPage.successfulLogin();
-   	loginPage.waitForSuccessfulLogin();
+		loginPage.successfulLogin();
+		loginPage.waitForSuccessfulLogin();
 
-    endTime = System.currentTimeMillis();
-    long responseTime = (endTime - startTime) / 1000;
-    logger.info("Expected time is {} seconds.", maxSeconds); 
-    logger.info("Actual time is {} seconds.", responseTime);
+		endTime = System.currentTimeMillis();
+		long responseTime = (endTime - startTime) / 1000;
+		logger.info("Expected time is {} seconds.", maxSeconds);
+		logger.info("Actual time is {} seconds.", responseTime);
 
-    Assert.assertTrue(
-            responseTime <= maxSeconds
-    );
-		
+		Assert.assertTrue(responseTime <= maxSeconds);
+
 	}
+
 	@Test(priority = 5, dataProvider = "validLogin", dataProviderClass = TestDataProvider.class)
 	public void verifyLoginButtonEnable(Map<String, String> credentials) {
 		loginPage.enterUsername(credentials.get("Username"));
 		loginPage.enterPassword(credentials.get("Password"));
 		boolean isEnabled = loginPage.isLoginButtonEnabled();
-		 logger.info("login button is enabled."); 
+		logger.info("login button is enabled.");
 
-	        Assert.assertTrue(isEnabled);
+		Assert.assertTrue(isEnabled);
 	}
+
 	@Test(priority = 6)
 	public void verifyPasswordIsMasked() {
 		loginPage.enterPassword("Sample@123");
 		String fieldType = loginPage.getPasswordFieldType();
-        logger.info("password field is masked."); 
+		logger.info("password field is masked.");
 
-        Assert.assertEquals(fieldType, "password", "Password field is not masked");
+		Assert.assertEquals(fieldType, "password", "Password field is not masked");
 	}
+
 	@Test(priority = 7, dataProvider = "invalidLogin", dataProviderClass = TestDataProvider.class)
 	public void verifyInvalidLoginErrorMsg(Map<String, String> credentials) {
 		loginPage.enterUsername(credentials.get("Username"));
 		loginPage.enterPassword(credentials.get("Password"));
 		loginPage.clickLoginButton();
 		boolean isErrorDisplayed = loginPage.isLoginErrorDisplayed();
-        logger.info("login error message displayed."); 
+		logger.info("login error message displayed.");
 
-        Assert.assertFalse(isErrorDisplayed);
-    }
-			
+		Assert.assertFalse(isErrorDisplayed);
 	}
-	
-	
 
+}

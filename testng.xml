@@ -6,9 +6,9 @@
 	</listeners>
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="testSuite.ArrayTest" />
-			<class name="testSuite.DataStructuresTest" />
 			<class name="testSuite.LoginTest" />
+			<class name="testSuite.StackTest" />
+			<class name="testSuite.QueueTest" />
 
 		</classes>
 	</test>

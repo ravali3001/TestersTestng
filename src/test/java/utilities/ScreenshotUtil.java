@@ -16,7 +16,7 @@ public class ScreenshotUtil {
 
         String path = "screenshots/" + testName + ".png";
 
-        File dest = new File(path);
+        File dest = new File("test-output/" + path);
 
         try {
             FileUtils.copyFile(src, dest);
