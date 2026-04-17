@@ -8,6 +8,7 @@ import org.testng.annotations.*;
 
 import base.BaseTest;
 import factory.DriverFactory;
+import managers.PageObjectManager;
 import pageObjects.ArrayPage; 
 import pageObjects.LoginPage;
 import pageObjects.TryEditorPage;
@@ -26,83 +27,86 @@ public class ArrayTest extends BaseTest{
 	    ArrayPage arrayPage;
 	    LoginPage loginPage;
 	    TryEditorPage tryEditorPage;
+	    PageObjectManager pom;
         Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
         Map<String, Map<String, String>> arrayData1 = ExcelReader.getArrayTryData();
 
         private static final Logger logger = LogManager.getLogger(ArrayTest.class); 
         
-        @BeforeMethod(dependsOnMethods = {"baseSetup"})
+        @BeforeMethod(dependsOnMethods = {"baseSetup"}) 
          public void setup() {
 	       
-            driver = DriverFactory.getDriver();  
+           /* driver = DriverFactory.getDriver();  
 	        arrayPage = new ArrayPage(); 
-		    tryEditorPage = new TryEditorPage(); 
-	       // loginPage=new LoginPage();
-	    	//loginPage.clickGetStarted();
-	        //loginPage.clickSignIn();
-	       // loginPage.successfulLogin();
+		    tryEditorPage = new TryEditorPage(); */
+        	pom = new PageObjectManager(driver);
+
+        	arrayPage = pom.getArrayPage();
+        	tryEditorPage = pom.getTryEditorPage();
+        	loginPage = pom.getLoginPage();
+	     
 	            
 	    }
 	    @Test(priority = 1)
 	   public void clickArrayModule() {
 	    	
-		    arrayPage.clickGetStartesArr();
-	        arrayPage.clickArraysInPython();
-	        arrayPage.clickArraysUsingList();
-	        arrayPage.clickBasicOperationsInLists();
-	        arrayPage.clickApplicationsOfArray();
+	    	pom.getArrayPage().clickGetStartesArr();
+	    	pom.getArrayPage().clickArraysInPython();
+	    	pom.getArrayPage().clickArraysUsingList();
+	    	pom.getArrayPage().clickBasicOperationsInLists();
+	    	pom.getArrayPage().clickApplicationsOfArray();
 	    }
 	        
 	 
 
 	    @Test(priority = 2)
 	    public void verifyArrayNavigation() {
-	        arrayPage.clickGetStartesArr();
-	        arrayPage.clickArraysInPython();
+	    	pom.getArrayPage().clickGetStartesArr();
+	    	pom.getArrayPage().clickArraysInPython();
 	        String expectedTitle= "Arrays in Python";
-	        String actualTitle =  arrayPage.getPageTitle();  
+	        String actualTitle =pom.getArrayPage().getPageTitle();  
 		    Assert.assertEquals(actualTitle, expectedTitle);
 			logger.info("*********EXPECTED TITLE********* {} ,{} ,{} ", expectedTitle,"******ACTUAL TITLE******",actualTitle);
 
-	        arrayPage.clickTryHere();
+			pom.getArrayPage().clickTryHere();
 	    }
 	    @Test(priority = 3)
 	    public void verifyUsingList() {
 	    	
-	        arrayPage.clickGetStartesArr();
-	        arrayPage.clickArraysUsingList();
+	    	pom.getArrayPage().clickGetStartesArr();
+	    	pom.getArrayPage().clickArraysUsingList();
 	        String expectedTitle= "Arrays Using List";
-	        String actualTitle =  arrayPage.getPageTitle();  
+	        String actualTitle = pom.getArrayPage().getPageTitle();  
 		    Assert.assertEquals(actualTitle, expectedTitle);
 			logger.info("*********EXPECTED TITLE********* {} ,{} ,{} ", expectedTitle,"******ACTUAL TITLE******",actualTitle);
 
 	        
-	        arrayPage.clickTryHere();
+			arrayPage.clickTryHere();
 	        
 	    }
 	    @Test(priority = 4)
 	    public void verifyBasicOperations() {
 	    	
-	        arrayPage.clickGetStartesArr();
-	        arrayPage.clickBasicOperationsInLists();
+	    	pom.getArrayPage().clickGetStartesArr();
+	    	pom.getArrayPage().clickBasicOperationsInLists();
 	        String expectedTitle= "Basic Operations in Lists";
-	        String actualTitle =  arrayPage.getPageTitle();  
+	        String actualTitle =pom.getArrayPage().getPageTitle();  
 		    Assert.assertEquals(actualTitle, expectedTitle);
 			logger.info("*********EXPECTED TITLE********* {} ,{} ,{} ", expectedTitle,"******ACTUAL TITLE******",actualTitle);
 
-	        arrayPage.clickTryHere();
+			pom.getArrayPage().clickTryHere();
 	    }
 	    @Test(priority = 5)
 	    public void verifyApplicationofArray() {
 	    	
-	        arrayPage.clickGetStartesArr();
-	        arrayPage.clickApplicationsOfArray();
+	    	pom.getArrayPage().clickGetStartesArr();
+	    	pom.getArrayPage().clickApplicationsOfArray();
 	        String expectedTitle= "Applications of Array";
-	        String actualTitle =  arrayPage.getPageTitle();  
+	        String actualTitle =pom.getArrayPage().getPageTitle();  
 		    Assert.assertEquals(actualTitle, expectedTitle);
 			logger.info("*********EXPECTED TITLE********* {} ,{} ,{} ", expectedTitle,"******ACTUAL TITLE******",actualTitle);
 
-	        arrayPage.clickTryHere();
+			pom.getArrayPage().clickTryHere();
 	        
 	    }
 	    
@@ -116,14 +120,13 @@ public class ArrayTest extends BaseTest{
 		 
 		   logger.info("Running TRY HERE test");
 		  
-		    arrayPage.clickGetStartesArr();
-	        arrayPage.clickArraysInPython();
-	        arrayPage.clickTryHere();
-	        arrayPage.enterCodeInEditor(code);
-	        arrayPage.clickRunButton();
-	        String actualOutput = arrayPage.getTryEditorResult();
-	       // String actualOutput = arrayPage.getOutput();
-	        System.out.println("TestCase: " + testCaseName + " | Expected: " + expectedOutput + " | Actual: " + actualOutput);
+		   pom.getArrayPage().clickGetStartesArr();
+		   pom.getArrayPage().clickArraysInPython();
+		   pom.getArrayPage().clickTryHere();
+		   pom.getArrayPage().enterCodeInEditor(code);
+		   pom.getArrayPage().clickRunButton();
+	        String actualOutput =pom.getArrayPage().getTryEditorResult();
+	     logger.info("TestCase: " + testCaseName + " | Expected: " + expectedOutput + " | Actual: " + actualOutput);
 
 	        Assert.assertEquals(actualOutput, expectedOutput);
 	    }
@@ -131,17 +134,18 @@ public class ArrayTest extends BaseTest{
 	  
 	  @Test(dataProvider = "ArrayPracticeQuestions",dataProviderClass = utilities.TestDataProvider.class,priority = 7)
 	  public void RunPracticeQuestions(String Questions) {
-		  arrayPage.clickGetStartesArr();
+		  pom.getArrayPage().clickGetStartesArr();
 
-		  arrayPage.clickArraysInPython();
-          arrayPage.clickPracticeQuestions();
-          arrayPage.clickQuestion(Questions); 
+		  pom.getArrayPage().clickArraysInPython();
+		  pom.getArrayPage().clickPracticeQuestions();
+		  pom.getArrayPage().clickQuestion(Questions); 
 
-         String ExpectedTitle="Assessment";
+          String ExpectedTitle="Assessment";
 
-          String actualTitle =arrayPage.getPageTitle();
-	        Assert.assertEquals(ExpectedTitle,actualTitle);
-	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+          String actualTitle =pom.getArrayPage().getPageTitle();
+
+	      Assert.assertEquals(ExpectedTitle,actualTitle);
+	      logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
 	  }
 
 	  //======================Excel Submit button verify============
@@ -150,22 +154,22 @@ public class ArrayTest extends BaseTest{
 
 
 	  public void SubmitPracticeQuestions(String testcaseName,String Questions,String pythonCode,String expectedOutput) {
-		  arrayPage.clickGetStartesArr();
-		  arrayPage.clickArraysInPython();
-          arrayPage.clickPracticeQuestions();
+		  pom.getArrayPage().clickGetStartesArr();
+		  pom.getArrayPage().clickArraysInPython();
+		  pom.getArrayPage().clickPracticeQuestions();
 
    
-          arrayPage.clickQuestion(Questions); 
-          arrayPage.clearEdit();
+		  pom.getArrayPage().clickQuestion(Questions);  
+		  pom.getArrayPage().clearEdit();
           
-          arrayPage.enterCodeInEditor(pythonCode); 
-          arrayPage.submit();//Error occurred during submission
+		  pom.getArrayPage().enterCodeInEditor(pythonCode); 
+		  pom.getArrayPage().submit();//Error occurred during submission
 
-            String ExpectedTitle="Error occurred during submission";
+          String ExpectedTitle="Error occurred during submission";
 
-            String actualTitle =arrayPage.getResultAfterSubmit();
-	        Assert.assertEquals(ExpectedTitle,actualTitle);
-	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+          String actualTitle =pom.getArrayPage().getResultAfterSubmit();
+	      Assert.assertEquals(ExpectedTitle,actualTitle);
+	      logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
 
 	  
 	  } 
@@ -175,22 +179,20 @@ public class ArrayTest extends BaseTest{
 	  @Test(dataProvider = "arrayData1" ,dataProviderClass = utilities.TestDataProvider.class,priority = 9)
 
 	  public void RunBTNPracticeQuestions(String testcaseName,String Questions,String pythonCode,String expectedOutput) {
-		  arrayPage.clickGetStartesArr();
+		  pom.getArrayPage().clickGetStartesArr();
 
-		  arrayPage.clickArraysInPython();
-          arrayPage.clickPracticeQuestions();
-          //arrayPage.clickSearchTheArray();
-          arrayPage.clickQuestion(Questions); 
-          arrayPage.clearEdit();
+		  pom.getArrayPage().clickArraysInPython();
+		  pom.getArrayPage().clickPracticeQuestions();
+		  pom.getArrayPage().clickQuestion(Questions); 
+		  pom.getArrayPage().clearEdit();
           
-          arrayPage.enterCodeInEditor(pythonCode); 
-          arrayPage.clickRunButton();
+		  pom.getArrayPage().enterCodeInEditor(pythonCode); 
+		  pom.getArrayPage().clickRunButton();
           String ExpectedTitle=expectedOutput;
 
-          String actualTitle =arrayPage.getTryEditorResult();
-               Assert.assertEquals(actualTitle.trim().toLowerCase(), ExpectedTitle.trim().toLowerCase());
-	       // Assert.assertEquals(ExpectedTitle,actualTitle);
-	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+          String actualTitle =pom.getArrayPage().getTryEditorResult();
+          Assert.assertEquals(actualTitle.trim().toLowerCase(), ExpectedTitle.trim().toLowerCase());
+	      logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
 	  
 	  }
 	   

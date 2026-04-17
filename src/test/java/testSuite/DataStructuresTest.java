@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import base.BaseTest;
 import factory.DriverFactory;
+import managers.PageObjectManager;
 import pageObjects.DataStructuresPages;
 import pageObjects.LoginPage;
 //import utilities.ConfigReader;
@@ -21,40 +22,63 @@ public class DataStructuresTest extends BaseTest{
 	
 
     WebDriver driver;
-    DataStructuresPages DSintro;
+    DataStructuresPages dsIntro;
     LoginPage loginPage;
+    PageObjectManager pom;
     Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
     private static final Logger logger = LogManager.getLogger(DataStructuresTest.class); 
 
 
    @BeforeMethod(dependsOnMethods = {"baseSetup"})
    public void setup() {
-	   
+	   pom = new PageObjectManager(driver);
 	   driver = DriverFactory.getDriver(); 
-       DSintro= new DataStructuresPages();
-      logger.info("*****SUCCESSFULL LOGIN******"); 
+	   dsIntro= pom.getDataStructuresPage();
+	   loginPage = pom.getLoginPage();
+       logger.info("*****SUCCESSFULL LOGIN******"); 
   
+  }  
+   @Test
+  public void Verifylable() {
+
+	   pom.getDataStructuresPage().islinkDisplayed();
+	   String ExpectedTitle="NumpyNinja";
+
+       String actualTitle =pom.getDataStructuresPage().getPageTitle();
+	        Assert.assertEquals(ExpectedTitle,actualTitle);
+	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
    }
-   
+   @Test
+   public void VerifyTitle() {
+	   pom.getDataStructuresPage().DSClickIntro();
+
+	   pom.getDataStructuresPage().isTitleDisplayed();
+	   String ExpectedTitle="Data Structures-Introduction";
+
+       String actualTitle =pom.getDataStructuresPage().getPageTitle();
+	        Assert.assertEquals(ExpectedTitle,actualTitle);
+	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+   }
     @Test
     public void DSclick() {
-    	DSintro.DSClickIntro();
-    	DSintro.DSClickTimeComplexity();
-    	DSintro.DSClickTryhere();
+    	pom.getDataStructuresPage().DSClickIntro();
+    	pom.getDataStructuresPage().DSClickTimeComplexity();
+    	pom.getDataStructuresPage().DSClickTryhere();
     	String ExpectedTitle="Assessment";
 
-        String actualTitle =DSintro.getPageTitle();
+        String actualTitle =pom.getDataStructuresPage().getPageTitle();
 	        Assert.assertEquals(ExpectedTitle,actualTitle);
 	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
     }
     
+    
     @Test
    public void DsclickPractice() {
-    	DSintro.DSClickIntro();
-     	DSintro.DSClickPracticeQ();
+    	pom.getDataStructuresPage().DSClickIntro();
+    	pom.getDataStructuresPage().DSClickPracticeQ();
      	String ExpectedTitle="Practice Questions";
 
-        String actualTitle =DSintro.getPageTitle();
+        String actualTitle =pom.getDataStructuresPage().getPageTitle();
 	        Assert.assertEquals(ExpectedTitle,actualTitle);
 	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
 
@@ -62,18 +86,18 @@ public class DataStructuresTest extends BaseTest{
    
     @Test(dataProvider = "arrayPracticeData", dataProviderClass = utilities.TestDataProvider.class)
     public void DSclickPracticeWithData(String testCaseName,String code, String expected) {
-    	DSintro.DSClickIntro();
-    	DSintro.DSClickTimeComplexity();
-    	DSintro.DSClickTryhere();
+    	pom.getDataStructuresPage().DSClickIntro();
+    	pom.getDataStructuresPage().DSClickTimeComplexity();
+    	pom.getDataStructuresPage().DSClickTryhere();
         
         // Send input to Try Editor (example)
-        DSintro.enterCode(code);  
+    	pom.getDataStructuresPage().enterCode(code);  
 
         // Click Run
-        DSintro.clickRunButton();
+    	pom.getDataStructuresPage().clickRunButton();
 
         // Assertion
-        String actualOutput = DSintro.getTryEditorResult();
+        String actualOutput =pom.getDataStructuresPage().getTryEditorResult();
         Assert.assertEquals(actualOutput, expected, "Output is not as expected!");
     }
 

@@ -1,21 +1,25 @@
 package testSuite;
 
 import java.util.Map;
-
+//import com.aventstack.chaintest.generator.simple.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
 import factory.DriverFactory;
+import managers.PageObjectManager;
 import pageObjects.HomePages;
 import pageObjects.LoginPage;
 import utilities.ConfigReader;
 import utilities.ExcelReader;
+
+@Listeners(listeners.chainTestListener.class) 
 
 public class HomeTest {
 	 private static final Logger logger = LogManager.getLogger(HomeTest.class); 
@@ -23,31 +27,32 @@ public class HomeTest {
 	WebDriver driver;
 	HomePages HomeDS;
     LoginPage loginPage;
+    PageObjectManager pom;
+
     Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
 
   
     @BeforeMethod
-    public void setup() {
+    public void setup() { 
+    	pom = new PageObjectManager(driver);
         DriverFactory.initDriver();
-        loginPage=new LoginPage();
+        loginPage=pom.getLoginPage();
         DriverFactory.getDriver().get(ConfigReader.getProperty("url"));
-        HomeDS= new HomePages();
-        loginPage.clickGetStarted();
-        
+        HomeDS= pom.getHomePage();
+        pom.getLoginPage().clickGetStarted();        
         
     }
    
-   
-  
+ 
    //===========================Verify Register link=========================
    
    @Test
    public void AssertionReg() {
 	   
-	 HomeDS.clickRegisterR();
+	 pom.getHomePage().clickRegisterR();
      String expectedTitle = "Registration";
 	 logger.info("1");
-     String actualTitle = HomeDS.getPagesTitle();
+     String actualTitle = pom.getHomePage().getPagesTitle();
      logger.info("2");
      Assert.assertEquals(expectedTitle ,actualTitle);
      logger.info("expectedTitle{},{},{}",expectedTitle ,actualTitle);
@@ -59,11 +64,11 @@ public class HomeTest {
    public void user_clicks_on_dropdown(String topic) {
 	   
        logger.info("**********DROP DOWN*********");
-       HomeDS.clickDDArrayBS();
-       HomeDS.clickModule(topic);
+       pom.getHomePage().clickDDArrayBS();
+       pom.getHomePage().clickModule(topic);
    	   String expectedTitle = "You are not logged in";
    	   logger.info("1"); 
-       String actualTitle = HomeDS.clickAlertR();
+       String actualTitle =  pom.getHomePage().clickAlertR();
        logger.info("2");
        Assert.assertEquals(expectedTitle ,actualTitle);
        logger.info("expectedTitle {},{},{}",expectedTitle ,actualTitle);
@@ -73,19 +78,19 @@ public class HomeTest {
    @Test
    public void VerifySignlink() {
 	   
-   HomeDS.clickSignInlinkR();
+	   pom.getHomePage().clickSignInlinkR();
    String expectedTitle = "Login";
 	logger.info("1");
-   String actualTitle = HomeDS.getPagesTitle();
+   String actualTitle = pom.getHomePage().getPagesTitle();
    logger.info("2");
     Assert.assertEquals(expectedTitle ,actualTitle);
     logger.info("expectedTitle {},{},",expectedTitle ,actualTitle);
     //loginPage.clickSignIn();
-    loginPage.successfulLogin();
+    pom.getLoginPage().successfulLogin();
     String expectedTitle1 = "You are logged in"
     		+ "";
 	   logger.info("1"); 
-    String actualTitle1 = HomeDS.clickAlertR();
+    String actualTitle1 = pom.getHomePage().clickAlertR();
     logger.info("2");
     Assert.assertEquals(expectedTitle1 ,actualTitle1);
     logger.info("expectedTitle {},{}",expectedTitle ,actualTitle);
@@ -98,19 +103,19 @@ public class HomeTest {
    public void VerifySigninAfter(String topic) { 
 	  
 	  
-	    HomeDS.clickSignInlinkR();
+	  pom.getHomePage().clickSignInlinkR();
 	    String expectedTitle = "Login";
 		logger.info("1");
-	    String actualTitle = HomeDS.getPagesTitle();
+	    String actualTitle =  pom.getHomePage().getPagesTitle();
 	    logger.info("2");
 	    Assert.assertEquals(expectedTitle ,actualTitle);
 	    logger.info("expectedTitle {},{},",expectedTitle ,actualTitle);
 	    loginPage.successfulLogin();
 	        
 	   
-	    HomeDS.clickDDArrayBS();
-	    HomeDS.clickModule(topic);
-	       String actualTitle2=HomeDS.getPagesTitle();
+	    pom.getHomePage().clickDDArrayBS(); 
+	    pom.getHomePage().clickModule(topic);
+	       String actualTitle2= pom.getHomePage().getPagesTitle();
 	       Assert.assertTrue(
 	    		    actualTitle2.toLowerCase().contains(topic.toLowerCase()) ||
 	    		    topic.toLowerCase().contains(actualTitle2.toLowerCase()),
