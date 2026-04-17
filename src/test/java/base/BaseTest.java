@@ -31,7 +31,6 @@ public class BaseTest {
     	loginPage = new LoginPage();
 		loginPage.clickGetStarted();
 		loginPage.clickSignIn();
-		loginPage.successfulLogin();
     }
 
     @AfterMethod(alwaysRun = true)

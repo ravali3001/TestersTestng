@@ -6,24 +6,20 @@ import com.aventstack.extentreports.ExtentTest;
 
 public class ExtentManager {
 
-    public static ExtentReports extent;
-    private static ExtentTest test;
+	public static ExtentReports extent;
 
-    public static ExtentReports getExtentReports() {
+	public static ExtentReports getExtentReports() {
+		if (extent == null) {
+			ExtentSparkReporter spark = new ExtentSparkReporter("test-output/ExtentReport.html");
 
-        if (extent == null) {
+			extent = new ExtentReports();
+			extent.attachReporter(spark);
+		}
 
-            ExtentSparkReporter spark = new ExtentSparkReporter("test-output/ExtentReport.html");
+		return extent;
+	}
 
-            extent = new ExtentReports();
-            extent.attachReporter(spark);
-
-       }
-
-        return extent;
-    }
-    public static ExtentTest createTest(String testName) {
-        test = getExtentReports().createTest(testName);
-        return test;
-    }
+	public static ExtentTest createTest(String testName) {
+		return getExtentReports().createTest(testName);
+	}
 }

@@ -5,17 +5,24 @@ import org.apache.logging.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import com.aventstack.extentreports.ExtentTest;
 
 import com.aventstack.extentreports.Status;
 
+import factory.DriverFactory;
+import testSuite.StackTest;
 import utilities.ExtentManager;
+import utilities.ScreenshotUtil;
+
 
 public class TestListener implements ITestListener { 
 	private static final Logger logger = LogManager.getLogger(TestListener.class);
 
 
 	@Override
+
 	public void onStart(ITestContext context) { 
+
 		logger.info("*******Test Suite Started: " + context.getName());
 
 	}
@@ -35,8 +42,14 @@ public class TestListener implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult result) {
 		logger.info("********Test Failed: " + result.getName());
-		ExtentManager.createTest(result.getMethod().getMethodName()).log(Status.FAIL,
+
+
+		String testMethodName = result.getMethod().getMethodName();
+		ExtentTest test = ExtentManager.createTest(testMethodName).log(Status.FAIL,
+
 				"Test Failed: " + result.getThrowable());
+		String path = ScreenshotUtil.captureScreenshot(DriverFactory.getDriver(), testMethodName);
+		test.addScreenCaptureFromPath(path);
 	}
 
 	@Override
