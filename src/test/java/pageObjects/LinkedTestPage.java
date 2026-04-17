@@ -103,10 +103,10 @@ package pageObjects;
 
 		public String getPageTitle() {
 	    	return driver.getTitle();
-	    }
+	    }}
 	    
 
-	}   
+	 
 	    
 
 

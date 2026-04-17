@@ -103,7 +103,18 @@ public class TestDataProvider {
 			            
 		    };
 			    }
-	 
+			@DataProvider(name = "LinkedlistData")
+		    public Object[][] codeData7() {
+		        return new Object[][] {
+		            {"Introduction"},
+		            {"Creating Linked LIst"},
+		            {"Types of Linked List"},
+		            {"Implement Linked List in Python"},
+		            {"Traversal"},
+		            {"Insertion"},
+                            {"Deletion"}
+		            };
+		    }	 
 //__________________________LOGIN DATA_____________________________
 	
 	// Login
