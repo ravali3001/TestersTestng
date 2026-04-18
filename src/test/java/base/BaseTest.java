@@ -15,7 +15,9 @@ public class BaseTest {
 	  WebDriver driver;
 	  LoginPage loginPage;
 	  PageObjectManager pom;
-	 
+	  
+	  @Parameters("browser")
+
     @BeforeMethod(alwaysRun = true)
     public void baseSetup() {
     	

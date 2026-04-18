@@ -27,7 +27,6 @@ public class DriverFactory {
 	public static void setBrowser(String browser) {
 		browserType.set(browser);
 	}
-    @Parameters("browser")
 
 	public static void initDriver() {
 		String browser = browserType.get();
