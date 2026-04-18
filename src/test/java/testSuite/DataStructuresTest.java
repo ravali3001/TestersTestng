@@ -19,7 +19,6 @@ public class DataStructuresTest extends BaseTest{
 	
 
     WebDriver driver;
-    LoginPage loginPage;
     PageObjectManager pom;
     Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
     private static final Logger logger = LogManager.getLogger(DataStructuresTest.class); 
@@ -71,7 +70,7 @@ public class DataStructuresTest extends BaseTest{
     
     
     @Test
-   public void DsclickPractice() {
+   public void DsclickPractice() { 
     	pom.getDataStructuresPage().DSClickIntro();
     	pom.getDataStructuresPage().DSClickPracticeQ();
      	String ExpectedTitle="Practice Questions";

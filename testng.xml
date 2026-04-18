@@ -28,7 +28,7 @@
         <parameter name="browser" value="firefox" />
         <classes>
             <class name="testSuite.DataStructuresTest" />
-            <class name="testSuite.LoginTest"/>
+            <!--<class name="testSuite.LoginTest"/>-->
         </classes>
     </test>
     

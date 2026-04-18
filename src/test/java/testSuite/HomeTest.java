@@ -12,8 +12,6 @@ import org.testng.annotations.Test;
 
 import factory.DriverFactory;
 import managers.PageObjectManager;
-import pageObjects.HomePages;
-import pageObjects.LoginPage;
 import utilities.ConfigReader;
 import utilities.ExcelReader;
 
@@ -23,8 +21,6 @@ public class HomeTest {
 	 private static final Logger logger = LogManager.getLogger(HomeTest.class); 
 
 	WebDriver driver;
-	HomePages HomeDS;
-    LoginPage loginPage;
     PageObjectManager pom;
 
     Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
@@ -36,12 +32,10 @@ public class HomeTest {
 
     	pom = new PageObjectManager(driver);
         DriverFactory.initDriver();
-        loginPage=pom.getLoginPage();
         DriverFactory.getDriver().get(ConfigReader.getProperty("url"));
-        HomeDS= pom.getHomePage();
         pom.getLoginPage().clickGetStarted();        
-        
     }
+    
    
  
    //===========================Verify Register link=========================

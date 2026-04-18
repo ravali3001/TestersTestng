@@ -22,9 +22,7 @@ public class ArrayTest extends BaseTest{
 	
 
 	    WebDriver driver;
-	    ArrayPage arrayPage;
-	    PageObjectManager pom;
-	    LoginPage loginPage;
+	    PageObjectManager pom; 
 	    
         Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
         Map<String, Map<String, String>> arrayData1 = ExcelReader.getArrayTryData();
@@ -37,9 +35,7 @@ public class ArrayTest extends BaseTest{
 
             driver = DriverFactory.getDriver();  
         	pom = new PageObjectManager(driver);
-        	arrayPage = pom.getArrayPage();
-            loginPage = pom.getLoginPage();
-            pom.getLoginPage().successfulLogin();
+            pom.getLoginPage().successfulLogin(); 
 	     
 	            
 	    }
@@ -77,7 +73,7 @@ public class ArrayTest extends BaseTest{
 			logger.info("*********EXPECTED TITLE********* {} ,{} ,{} ", expectedTitle,"******ACTUAL TITLE******",actualTitle);
 
 	        
-			arrayPage.clickTryHere();
+			pom.getArrayPage().clickTryHere();
 	        
 	    }
 	    @Test(priority = 4)

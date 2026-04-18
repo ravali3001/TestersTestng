@@ -21,27 +21,22 @@ import utilities.ExcelReader;
 public class RegisterTest {
 	
 	WebDriver driver;
-    RegisterPage registerPage;
-    LoginPage loginPage;
-    TryEditorPage tryEditorPage;
     PageObjectManager pom;
+    
     Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
     Map<String, Map<String, String>> arrayData1 = ExcelReader.getArrayTryData();
     private static final Logger logger = LogManager.getLogger(RegisterTest.class);
     
     @BeforeMethod() 
-    public void setup() {
+    public void setup() { 
+    	
         logger.info("************REGISTER MODULE**********");
     	pom = new PageObjectManager(driver);
         DriverFactory.initDriver();
-        loginPage=pom.getLoginPage();
         DriverFactory.getDriver().get(ConfigReader.getProperty("url"));        
         pom.getLoginPage().clickGetStarted();                
-        registerPage = pom.getRegisterPage();
-      	tryEditorPage = pom.getTryEditorPage();
     
-           
-   }
+             }
     @Test
     public void VerifyLogo() {
     	pom.getRegisterPage().clickRegisterLink();
