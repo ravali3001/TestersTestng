@@ -2,7 +2,6 @@ package testSuite;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
@@ -11,7 +10,6 @@ import factory.DriverFactory;
 import managers.PageObjectManager;
 import pageObjects.ArrayPage; 
 import pageObjects.LoginPage;
-import pageObjects.TryEditorPage;
 
 import utilities.ExcelReader;
 
@@ -25,9 +23,9 @@ public class ArrayTest extends BaseTest{
 
 	    WebDriver driver;
 	    ArrayPage arrayPage;
-	    LoginPage loginPage;
-	    TryEditorPage tryEditorPage;
 	    PageObjectManager pom;
+	    LoginPage loginPage;
+	    
         Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
         Map<String, Map<String, String>> arrayData1 = ExcelReader.getArrayTryData();
 
@@ -35,15 +33,13 @@ public class ArrayTest extends BaseTest{
         
         @BeforeMethod(dependsOnMethods = {"baseSetup"}) 
          public void setup() {
-	       
-           /* driver = DriverFactory.getDriver();  
-	        arrayPage = new ArrayPage(); 
-		    tryEditorPage = new TryEditorPage(); */
-        	pom = new PageObjectManager(driver);
+            logger.info("************ARRAY MODULE**********");
 
+            driver = DriverFactory.getDriver();  
+        	pom = new PageObjectManager(driver);
         	arrayPage = pom.getArrayPage();
-        	tryEditorPage = pom.getTryEditorPage();
-        	loginPage = pom.getLoginPage();
+            loginPage = pom.getLoginPage();
+            pom.getLoginPage().successfulLogin();
 	     
 	            
 	    }
@@ -197,13 +193,14 @@ public class ArrayTest extends BaseTest{
 	  }
 	   
 	   
+	 
 	  @AfterMethod
 	  public void tearDown() {
-
-	   if (driver != null) {
-	       driver.quit();
+	      if (DriverFactory.getDriver() != null) {
+	          DriverFactory.getDriver().quit();
+	      }
 	  }
 	  }
 
-}
+
 

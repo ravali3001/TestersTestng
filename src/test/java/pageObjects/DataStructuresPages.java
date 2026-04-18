@@ -88,10 +88,7 @@ public class DataStructuresPages {
 	}
 	public void DSClickTryhere() {
 	WebElement txt2=driver.findElement(TryHere);
-    	//JavascriptExecutor js = (JavascriptExecutor) driver;
-    	//js.executeScript("arguments[0].scrollIntoView(true);", txt2);
-	    //txt2.click();
-		//driver.findElement(TryHereDS).click();
+    	
 	Actions actions = new Actions(driver);
 	actions.moveToElement(txt2).perform();
 	txt2.click();

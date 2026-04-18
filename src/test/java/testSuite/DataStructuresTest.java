@@ -7,22 +7,18 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-//import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
 import factory.DriverFactory;
 import managers.PageObjectManager;
-import pageObjects.DataStructuresPages;
 import pageObjects.LoginPage;
-//import utilities.ConfigReader;
 import utilities.ExcelReader;
 
 public class DataStructuresTest extends BaseTest{
 	
 
     WebDriver driver;
-    DataStructuresPages dsIntro;
     LoginPage loginPage;
     PageObjectManager pom;
     Map<String, Map<String, String>> arrayData = ExcelReader.getArraydataData();
@@ -31,33 +27,35 @@ public class DataStructuresTest extends BaseTest{
 
    @BeforeMethod(dependsOnMethods = {"baseSetup"})
    public void setup() {
+	   
+       logger.info("************DATA STRUCTURES**********");
 	   pom = new PageObjectManager(driver);
-	   driver = DriverFactory.getDriver(); 
-	   dsIntro= pom.getDataStructuresPage();
-	   loginPage = pom.getLoginPage();
-       logger.info("*****SUCCESSFULL LOGIN******"); 
+	   driver = DriverFactory.getDriver();
+	   pom.getLoginPage().successfulLogin();
   
   }  
    @Test
   public void Verifylable() {
-
+	   
+       logger.info("*****SUCCESSFULL LOGIN******"); 
 	   pom.getDataStructuresPage().islinkDisplayed();
 	   String ExpectedTitle="NumpyNinja";
 
        String actualTitle =pom.getDataStructuresPage().getPageTitle();
-	        Assert.assertEquals(ExpectedTitle,actualTitle);
-	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+	   Assert.assertEquals(ExpectedTitle,actualTitle);
+	   logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+	   
    }
    @Test
    public void VerifyTitle() {
+	   
 	   pom.getDataStructuresPage().DSClickIntro();
-
 	   pom.getDataStructuresPage().isTitleDisplayed();
 	   String ExpectedTitle="Data Structures-Introduction";
 
        String actualTitle =pom.getDataStructuresPage().getPageTitle();
-	        Assert.assertEquals(ExpectedTitle,actualTitle);
-	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+	   Assert.assertEquals(ExpectedTitle,actualTitle);
+	   logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
    }
     @Test
     public void DSclick() {
@@ -67,8 +65,8 @@ public class DataStructuresTest extends BaseTest{
     	String ExpectedTitle="Assessment";
 
         String actualTitle =pom.getDataStructuresPage().getPageTitle();
-	        Assert.assertEquals(ExpectedTitle,actualTitle);
-	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+	    Assert.assertEquals(ExpectedTitle,actualTitle);
+	    logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
     }
     
     
@@ -79,8 +77,8 @@ public class DataStructuresTest extends BaseTest{
      	String ExpectedTitle="Practice Questions";
 
         String actualTitle =pom.getDataStructuresPage().getPageTitle();
-	        Assert.assertEquals(ExpectedTitle,actualTitle);
-	        logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
+	    Assert.assertEquals(ExpectedTitle,actualTitle);
+	    logger.info("*******ExpectedTitle******* {} ,{}, {}",ExpectedTitle , "*****actualTitle*****", actualTitle);
 
    }
    

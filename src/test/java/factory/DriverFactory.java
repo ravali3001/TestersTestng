@@ -27,6 +27,7 @@ public class DriverFactory {
 	public static void setBrowser(String browser) {
 		browserType.set(browser);
 	}
+    @Parameters("browser")
 
 	public static void initDriver() {
 		String browser = browserType.get();
@@ -61,7 +62,6 @@ logger.info("Running in :" + browser + ">browsers");
 			throw new RuntimeException("Browser not supported: " + browser);
 		}
 
-		//getDriver().get(ConfigReader.getProperty("url"));
 		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

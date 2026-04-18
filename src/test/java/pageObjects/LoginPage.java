@@ -18,13 +18,11 @@ public class LoginPage {
     ConfigReader configReader;
     static Map<String, Map<String, String>> testData;
   
-    public LoginPage() {
+    public LoginPage() { 
+    	
     	this.driver = DriverFactory.getDriver();
- 
-    	//this.driver=driver;
-       
-
     	ConfigReader.loadConfig();
+    	
     }
 
     // Locators
@@ -40,10 +38,12 @@ public class LoginPage {
 
     /** Open DS Algo portal */
     public void openPortal() {
+    	
         driver.get(ConfigReader.getProperty("url"));
+        
     }
 
-    /** Click Get Started button on homepage */
+    /** Click Get Started button on homepage */ 
     public void clickGetStarted() {
         driver.findElement(getStartedBtn).click();
     }

@@ -13,7 +13,7 @@
 		<classes>
 			<class name="testSuite.LoginTest" />
 			<class name="testSuite.ArrayTest" />
-				<!--<class name="testSuite.HomeTest" />
+			<!--<class name="testSuite.HomeTest" />
 			<class name="testSuite.DataStructuresTest" />
 
 			 <class name="testSuite.LoginTest" />-->
@@ -24,7 +24,7 @@
 
 		</classes>
 	</test>
- <test name="FirefoxTest">
+    <test name="FirefoxTest">
         <parameter name="browser" value="firefox" />
         <classes>
             <class name="testSuite.DataStructuresTest" />
@@ -36,6 +36,7 @@
         <parameter name="browser" value="chrome" />
         <classes>
            <class name="testSuite.HomeTest" />
+           <class name="testSuite.RegisterTest" />
         </classes>
     </test>
 

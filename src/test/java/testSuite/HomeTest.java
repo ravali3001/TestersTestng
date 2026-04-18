@@ -1,7 +1,6 @@
 package testSuite;
 
 import java.util.Map;
-//import com.aventstack.chaintest.generator.simple.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +10,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import base.BaseTest;
 import factory.DriverFactory;
 import managers.PageObjectManager;
 import pageObjects.HomePages;
@@ -34,6 +32,8 @@ public class HomeTest {
   
     @BeforeMethod
     public void setup() { 
+        logger.info("************HOME MODULE**********");
+
     	pom = new PageObjectManager(driver);
         DriverFactory.initDriver();
         loginPage=pom.getLoginPage();
@@ -78,14 +78,13 @@ public class HomeTest {
    @Test
    public void VerifySignlink() {
 	   
-	   pom.getHomePage().clickSignInlinkR();
-   String expectedTitle = "Login";
-	logger.info("1");
-   String actualTitle = pom.getHomePage().getPagesTitle();
-   logger.info("2");
+    pom.getHomePage().clickSignInlinkR();
+    String expectedTitle = "Login";
+    logger.info("1");
+    String actualTitle = pom.getHomePage().getPagesTitle();
+    logger.info("2");
     Assert.assertEquals(expectedTitle ,actualTitle);
     logger.info("expectedTitle {},{},",expectedTitle ,actualTitle);
-    //loginPage.clickSignIn();
     pom.getLoginPage().successfulLogin();
     String expectedTitle1 = "You are logged in"
     		+ "";
@@ -110,7 +109,7 @@ public class HomeTest {
 	    logger.info("2");
 	    Assert.assertEquals(expectedTitle ,actualTitle);
 	    logger.info("expectedTitle {},{},",expectedTitle ,actualTitle);
-	    loginPage.successfulLogin();
+	    pom.getLoginPage().successfulLogin();
 	        
 	   
 	    pom.getHomePage().clickDDArrayBS(); 

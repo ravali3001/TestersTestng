@@ -177,4 +177,17 @@ public class TestDataProvider {
 	public Object[][] invalidPythonCode() {
 		return getEditorDataForTestCase("PythonCode_Invalid");
 	}
+	
+	//-----------------Registration
+	@DataProvider(name = "Registration")
+	public Object[][] registrationDS() {
+		 return new Object[][] {
+			 {"User1", "123@13", "123@13", "New Account Created. You are logged in as User1"},
+		        {"", "123@13", "123@13", "Please fill out this field."},
+		        {"User2", "123", "123", "password_mismatch:The two password fields didn’t match."},
+		        {"User3", "abc@123", "xyz@123", "password_mismatch:The two password fields didn’t match."}
+	        };
+	    }
+	
 }
+

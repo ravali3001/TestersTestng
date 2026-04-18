@@ -20,10 +20,10 @@ public class HomePages {
 	 private static final Logger logger = LogManager.getLogger(HomePages.class); 
 
 	public HomePages() { 
-	     // this.driver = driver;
+		
     	this.driver = DriverFactory.getDriver();
-
 	      this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	      
 	}
 
 	private By LaunchGetstart=By.linkText("Get Started");
@@ -33,18 +33,18 @@ public class HomePages {
 	private By DSdropdown=By.xpath("//a[@href='#']");
 	private	By Arrays=By.linkText("Arrays");
 	private	By Linked=By.linkText("Linked List");
-   private By stackHm=By.linkText("Stack");
+    private By stackHm=By.linkText("Stack");
 	private	By QueueHm=By.linkText("Queue");
 	private By GraphHm=By.linkText("Graph");
-  private By AlertHm=By.xpath("//div[@role='alert']");
-  private By SigninHm=By.linkText("Sign in"); 
-  private By usernameField = By.id("id_username");
-  private By passwordField = By.id("id_password");
-  private By loginBtn = By.xpath("//input[@value='Login']");
-  private By logoutLink = By.xpath("//a[@href='/logout']");
-  private  By errorMsg = By.xpath("//div[contains(@class,'alert')]"); 
-  private By Error=By.xpath("/html/body/div[2]");
-  private By SignOut=By.linkText("Sign out");
+    private By AlertHm=By.xpath("//div[@role='alert']");
+    private By SigninHm=By.linkText("Sign in"); 
+    private By usernameField = By.id("id_username");
+    private By passwordField = By.id("id_password");
+    private By loginBtn = By.xpath("//input[@value='Login']");
+    private By logoutLink = By.xpath("//a[@href='/logout']");
+    private  By errorMsg = By.xpath("//div[contains(@class,'alert')]"); 
+    private By Error=By.xpath("/html/body/div[2]");
+    private By SignOut=By.linkText("Sign out");
 		  //Actions action = new Actions(driver);
 		
 
@@ -72,20 +72,10 @@ public class HomePages {
    
    
    public void clickModule(String moduleName) {
+	   
    	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
-   	    // Open dropdown first
-   	   /* driver.findElement(DSdropdown).click();*/
-      	// wait.until(ExpectedConditions.elementToBeClickable(DSdropdown)).click();
-
-   	    // Click module
-   	    //By module = By.xpath("//a[normalize-space()='" + moduleName + "']");
-   	   // wait.until(ExpectedConditions.elementToBeClickable(module)).click();
-   	//-------testng
-   	    // Open dropdown first
-   	 //wait.until(ExpectedConditions.elementToBeClickable(DSdropdown)).click();
-   	   By module = By.linkText(moduleName);
-         wait.until(ExpectedConditions.elementToBeClickable(module)).click();
+   	    By module = By.linkText(moduleName);
+        wait.until(ExpectedConditions.elementToBeClickable(module)).click();
    }
    
   

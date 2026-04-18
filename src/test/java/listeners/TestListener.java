@@ -2,6 +2,7 @@ package listeners;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -41,15 +42,18 @@ public class TestListener implements ITestListener {
 
 	@Override
 	public void onTestFailure(ITestResult result) {
+	    WebDriver driver = DriverFactory.getDriver();
+
 		logger.info("********Test Failed: " + result.getName());
 
-
+		 if (driver != null) {
 		String testMethodName = result.getMethod().getMethodName();
 		ExtentTest test = ExtentManager.createTest(testMethodName).log(Status.FAIL,
 
 				"Test Failed: " + result.getThrowable());
 		String path = ScreenshotUtil.captureScreenshot(DriverFactory.getDriver(), testMethodName);
 		test.addScreenCaptureFromPath(path);
+		 }
 	}
 
 	@Override
@@ -62,4 +66,9 @@ public class TestListener implements ITestListener {
 		logger.info("*******Test Suite Finished: " + context.getName());
 		ExtentManager.getExtentReports().flush();
 	}
+	
+	
 }
+	    
+	
+

@@ -28,7 +28,6 @@ import factory.DriverFactory;
 	    private static final Logger logger = LogManager.getLogger(ArrayPage.class); 
 	    WebDriver driver;
 	          public ArrayPage() {  
-	                   //this.driver = driver; 
 	          	this.driver = DriverFactory.getDriver();
  
 	          }        
@@ -54,8 +53,7 @@ import factory.DriverFactory;
 	    private By codeText = By.xpath("//textarea[@tabindex='0']");
 	    private By submit=By.xpath("//input[@type='submit']");
 	    private By editorClear=By.id("editor");
-		       //By editor = By.id("textarea");
-	           // By editor= By.xpath("//div[@class='CodeMirror-code']");
+		       
 	    
 		         By editor=By.xpath("//form[@id='answer_form']/div/div/div/textarea"); 
 		         
@@ -178,15 +176,15 @@ import factory.DriverFactory;
 			    
 			    }
 			    public String Output(){
+			    	
 			    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
 			    WebElement output = wait.until(ExpectedConditions.visibilityOfElementLocated(
-			        By.id("output")   // change locator accordingly
+			        By.id("output")   
 			    ));
 
 			    
 			    String actual = output.getText();
-			    System.out.println("Actual Output: " + actual);
+			    logger.info("Actual Output: " + actual);
 			    return driver.getTitle();
 			    }
 			     
@@ -202,14 +200,17 @@ import factory.DriverFactory;
 			    }
 			    
 			    public void submit() {
+			    	
 			    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
 			    	WebElement editor = wait.until(ExpectedConditions.elementToBeClickable(submit));
 			    	editor.click();
+			    	
 			    }
 			    
 			    public String getMessage1() {
+			    	
 			        return driver.findElement(output).getText();
+			        
 			    }
 			    
 			    public String getResultAfterSubmit() {
@@ -259,7 +260,7 @@ import factory.DriverFactory;
 			        } 
 			        catch (TimeoutException e) {
 			            // Wait for output to be visible AND updated
-			            WebElement output1 = wait.until(
+			                WebElement output1 = wait.until(
 			                ExpectedConditions.visibilityOfElementLocated(output)
 			            );
 
@@ -273,16 +274,12 @@ import factory.DriverFactory;
 			    
 			    public String getOutputMessage() {
 			    	WebElement txt =driver.findElement(output);
-			       // WebElement output1 = wait.until(
-			        //    ExpectedConditions.visibilityOfElementLocated(output)
-			        //);
 			        return txt.getText();
 			    }
 			    
 			    
 			    public String getPageTitle() {
 				        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
 			    	    return driver.getTitle();   // get the page title
 			    	}
 			    	
