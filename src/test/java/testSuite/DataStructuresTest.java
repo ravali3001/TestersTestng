@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 import base.BaseTest;
 import factory.DriverFactory;
 import managers.PageObjectManager;
-import pageObjects.LoginPage;
 import utilities.ExcelReader;
 
 public class DataStructuresTest extends BaseTest{

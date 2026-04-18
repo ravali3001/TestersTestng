@@ -15,7 +15,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class QueueTest extends BaseTest {
+public class QueueTest extends BaseTest { 
 
 	private static final Logger logger = LogManager.getLogger(StackTest.class);
 

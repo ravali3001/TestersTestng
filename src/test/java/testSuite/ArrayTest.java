@@ -4,13 +4,9 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
 import base.BaseTest;
 import factory.DriverFactory;
 import managers.PageObjectManager;
-import pageObjects.ArrayPage; 
-import pageObjects.LoginPage;
-
 import utilities.ExcelReader;
 
 
