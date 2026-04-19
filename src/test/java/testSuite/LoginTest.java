@@ -107,7 +107,7 @@ public class LoginTest extends BaseTest {
 		boolean isErrorDisplayed = loginPage.isLoginErrorDisplayed();
 		logger.info("login error message displayed.");
 
-		Assert.assertFalse(isErrorDisplayed);
+		Assert.assertTrue(isErrorDisplayed);
 	}
 
 }

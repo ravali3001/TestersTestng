@@ -1,15 +1,11 @@
 package base;
 
-import com.aventstack.chaintest.plugins.ChainTestListener;
 import org.testng.annotations.*;
 import factory.DriverFactory;
 import managers.PageObjectManager;
 import pageObjects.LoginPage;
 import utilities.ConfigReader;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseTest {
 	WebDriver driver;
@@ -18,7 +14,7 @@ public class BaseTest {
 
 	@Parameters("browser")
 	@BeforeMethod(alwaysRun = true)
-	public void baseSetup(String browserName) {
+	public void baseSetup(@Optional String browserName) {
 		DriverFactory.setBrowser(browserName);
 		DriverFactory.initDriver();
 		String url = ConfigReader.getProperty("url");
@@ -30,12 +26,10 @@ public class BaseTest {
 
 	@BeforeMethod()
 	public void dsAlgoLogin() {
-
 		pom = new PageObjectManager(driver);
 		loginPage = pom.getLoginPage();
-		pom.getLoginPage().clickGetStarted();
-		pom.getLoginPage().clickSignIn();
-
+		loginPage.clickGetStarted();
+		loginPage.clickSignIn();
 	}
 
 	@AfterMethod(alwaysRun = true)
