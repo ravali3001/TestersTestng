@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
+import managers.PageObjectManager;
 import pageObjects.LoginPage;
 import utilities.TestDataProvider;
 import org.apache.logging.log4j.LogManager;
@@ -16,11 +17,13 @@ public class LoginTest extends BaseTest {
 
 	private static final Logger logger = LogManager.getLogger(LoginTest.class);
 
+	PageObjectManager pom; 
 	private LoginPage loginPage;
 
 	@BeforeMethod(dependsOnMethods = { "baseSetup", "dsAlgoLogin" })
 	public void setup() {
-		loginPage = new LoginPage();
+		pom = new PageObjectManager();
+		loginPage = pom.getLoginPage();
 	}
 
 	@Test(priority = 0, dataProvider = "validLogin", dataProviderClass = TestDataProvider.class)
@@ -104,7 +107,7 @@ public class LoginTest extends BaseTest {
 		boolean isErrorDisplayed = loginPage.isLoginErrorDisplayed();
 		logger.info("login error message displayed.");
 
-		Assert.assertFalse(isErrorDisplayed);
+		Assert.assertTrue(isErrorDisplayed);
 	}
 
 }
