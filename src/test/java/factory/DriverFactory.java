@@ -10,10 +10,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeMethod;
-//import org.testng.annotations.BeforeMethod;
-//import org.testng.annotations.Optional;/import org.testng.annotations.Parameters;
 import org.testng.annotations.Parameters;
-
 import utilities.ConfigReader;
 
 public class DriverFactory {
@@ -23,13 +20,12 @@ public class DriverFactory {
 	private static final Logger logger = LogManager.getLogger(DriverFactory.class);
 	
 
-	    
 	public static void setBrowser(String browser) {
-		browserType.set(browser);
-	}
+	browserType.set(browser);
+}
 
 	public static void initDriver() {
-		String browser = browserType.get();
+	String browser = browserType.get();
 
 		if (browser == null || browser.isBlank()) {
 			browser = ConfigReader.getProperty("browser");
@@ -42,6 +38,7 @@ logger.info("Running in :" + browser + ">browsers");
 		case "chrome":
 
 			ChromeOptions options = new ChromeOptions();
+
 			options.addArguments("--disk-cache-size=0");
 			options.addArguments("--disk-cache-size=0");
 			driver.set(new ChromeDriver(options));

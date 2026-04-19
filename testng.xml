@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!--<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">-->
 <suite name="Suite" parallel="tests" thread-count="5">
+ 
 	 <!-- <listeners>
 	
  <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"></listener> 
@@ -8,15 +9,15 @@
 
 		<listener class-name="listeners.chainTestListener" />
 	</listeners>-->
-	<test name="edgeTest">
+	<!--<test name="edgeTest">
         <parameter name="browser" value="edge" thread-count="5"/>
 		<classes>
 			<class name="testSuite.LoginTest" />
 			<class name="testSuite.ArrayTest" />
-			<!--<class name="testSuite.HomeTest" />
+			<class name="testSuite.HomeTest" />
 			<class name="testSuite.DataStructuresTest" />
 
-			 <class name="testSuite.LoginTest" />-->
+			 <class name="testSuite.LoginTest" />
 
 			<class name="testSuite.StackTest" />
 			<class name="testSuite.QueueTest" />
@@ -25,15 +26,15 @@
 		</classes>
 	</test>
     <test name="FirefoxTest">
-        <parameter name="browser" value="firefox" />
+        <parameter name="browser2" value="firefox" />
         <classes>
             <class name="testSuite.DataStructuresTest" />
-            <!--<class name="testSuite.LoginTest"/>-->
+            <class name="testSuite.LoginTest"/>
         </classes>
-    </test>
+    </test>-->
     
-    <test name="Chrome">
-        <parameter name="browser" value="chrome" />
+    <test name="firefoxTest">
+        <parameter name="browser" value="firefox" />
         <classes>
            <class name="testSuite.HomeTest" />
            <class name="testSuite.RegisterTest" />

@@ -12,14 +12,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 public class BaseTest {
-	  WebDriver driver;
+	
+      WebDriver driver;
 	  LoginPage loginPage;
 	  PageObjectManager pom;
 	  
-	  @Parameters("browser")
+	 @Parameters("browser") 
 
     @BeforeMethod(alwaysRun = true)
-    public void baseSetup() {
+	    public void baseSetup() {
     	
         DriverFactory.initDriver();  
         String url = ConfigReader.getProperty("url");
@@ -28,6 +29,7 @@ public class BaseTest {
         }
         DriverFactory.getDriver().get(url);
     }
+	  
     @BeforeMethod()
     public void dsAlgoLogin() {
     	
@@ -46,4 +48,5 @@ public class BaseTest {
     protected WebDriver getDriver() {
         return DriverFactory.getDriver();
     }
+
 }

@@ -26,7 +26,7 @@ public class RegisterTest {
     	
         logger.info("************REGISTER MODULE**********");
     	pom = new PageObjectManager(driver);
-        DriverFactory.initDriver();
+     DriverFactory.initDriver();
         DriverFactory.getDriver().get(ConfigReader.getProperty("url"));        
         pom.getLoginPage().clickGetStarted();                
     
