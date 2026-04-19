@@ -4,26 +4,20 @@ import java.time.Duration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver; 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.BeforeMethod;
-//import org.testng.annotations.BeforeMethod;
-//import org.testng.annotations.Optional;/import org.testng.annotations.Parameters;
-import org.testng.annotations.Parameters;
 
 import utilities.ConfigReader;
 
 public class DriverFactory {
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
 	private static ThreadLocal<String> browserType = new ThreadLocal<>();
 	private static final Logger logger = LogManager.getLogger(DriverFactory.class);
-	
 
-	    
 	public static void setBrowser(String browser) {
 		browserType.set(browser);
 	}
@@ -33,10 +27,9 @@ public class DriverFactory {
 
 		if (browser == null || browser.isBlank()) {
 			browser = ConfigReader.getProperty("browser");
-			
 		}
-		
-logger.info("Running in :" + browser + ">browsers");
+
+		logger.info("Running in <" + browser + "> browser.");
 		switch (browser.toLowerCase()) {
 
 		case "chrome":
@@ -70,14 +63,10 @@ logger.info("Running in :" + browser + ">browsers");
 		return driver.get();
 	}
 
-	public static void setBrowserName(String browserName) {
-
-	}
-	
 	public static void quitDriver() {
-if (driver.get() != null) {
+		if (driver.get() != null) {
 			driver.get().quit();
-			driver.remove();}
+			driver.remove();
 		}
 	}
-
+}

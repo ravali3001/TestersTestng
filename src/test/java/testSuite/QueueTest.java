@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
+import managers.PageObjectManager;
 import pageObjects.LoginPage;
 import pageObjects.QueuePage;
 import pageObjects.TryEditorPage;
@@ -19,15 +20,17 @@ public class QueueTest extends BaseTest {
 
 	private static final Logger logger = LogManager.getLogger(StackTest.class);
 
+	PageObjectManager pom;
 	LoginPage loginPage;
 	QueuePage queuePage;
 
 	@BeforeMethod(dependsOnMethods = { "baseSetup", "dsAlgoLogin" })
 	public void setup() {
-		loginPage = new LoginPage();
+		pom = new PageObjectManager(); 
+		loginPage = pom.getLoginPage();
 		loginPage.successfulLogin();
-
-		queuePage = new QueuePage();
+		
+		queuePage = pom.getQueuePage();
 		queuePage.clickQueueGetStarted();
 	}
 	@Test(priority = 0, dataProvider = "queueTopics", dataProviderClass = TestDataProvider.class)

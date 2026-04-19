@@ -22,6 +22,8 @@ private RegisterPage registerPage;
     private QueuePage queuePage;
     private TryEditorPage tryEditorPage;
 
+    public PageObjectManager() {}
+
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
     }

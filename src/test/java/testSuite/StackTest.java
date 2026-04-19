@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
+import managers.PageObjectManager;
 import pageObjects.LoginPage;
 import pageObjects.StackPage;
 import pageObjects.TryEditorPage;
@@ -19,15 +20,17 @@ public class StackTest extends BaseTest {
 
 	private static final Logger logger = LogManager.getLogger(StackTest.class);
 
+	PageObjectManager pom; 
 	LoginPage loginPage;
 	StackPage stackPage;
 
 	@BeforeMethod(dependsOnMethods = { "baseSetup", "dsAlgoLogin" })
 	public void setup() {
-		loginPage = new LoginPage();
+		pom = new PageObjectManager(); 
+		loginPage = pom.getLoginPage();
 		loginPage.successfulLogin();
 
-		stackPage = new StackPage();
+		stackPage = pom.getStackPage();
 		stackPage.clickGetStartedStack();
 	}
 
