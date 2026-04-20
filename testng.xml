@@ -5,6 +5,7 @@
 		<listener
 			class-name="com.aventstack.chaintest.plugins.ChainTestListener" />
 		<listener class-name="listeners.TestListener" />
+		<listener class-name="listeners.RetryListener" />
 	</listeners>
 
 	<test name="EdgeTest">
@@ -17,6 +18,9 @@
 			<class name="testSuite.DataStructuresTest" />
 			<class name="testSuite.QueueTest" />
 			<class name="testSuite.StackTest" />
+			<class name="testSuite.GraphTest" />
+			<class name="testSuite.LinkedListTest" />
+			<class name="testSuite.TreeTest" />
 		</classes>
 	</test>
 
@@ -30,6 +34,9 @@
 			<class name="testSuite.DataStructuresTest" />
 			<class name="testSuite.QueueTest" />
 			<class name="testSuite.StackTest" />
+			<class name="testSuite.GraphTest" />
+			<class name="testSuite.LinkedListTest" />
+			<class name="testSuite.TreeTest" />
 		</classes>
 	</test>
 
@@ -43,6 +50,9 @@
 			<class name="testSuite.DataStructuresTest" />
 			<class name="testSuite.QueueTest" />
 			<class name="testSuite.StackTest" />
+			<class name="testSuite.GraphTest" />
+			<class name="testSuite.LinkedListTest" />
+			<class name="testSuite.TreeTest" />
 		</classes>
 	</test>
 

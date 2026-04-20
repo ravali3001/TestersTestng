@@ -11,19 +11,14 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
 import factory.DriverFactory;
-import testSuite.StackTest;
 import utilities.ExtentManager;
 import utilities.ScreenshotUtil;
 
-
-public class TestListener implements ITestListener { 
+public class TestListener implements ITestListener {
 	private static final Logger logger = LogManager.getLogger(TestListener.class);
 
-
 	@Override
-
-	public void onStart(ITestContext context) { 
-
+	public void onStart(ITestContext context) {
 		logger.info("*******Test Suite Started: " + context.getName());
 
 	}
@@ -42,18 +37,18 @@ public class TestListener implements ITestListener {
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-	    WebDriver driver = DriverFactory.getDriver();
+		WebDriver driver = DriverFactory.getDriver();
 
 		logger.info("********Test Failed: " + result.getName());
 
-		 if (driver != null) {
-		String testMethodName = result.getMethod().getMethodName();
-		ExtentTest test = ExtentManager.createTest(testMethodName).log(Status.FAIL,
+		if (driver != null) {
+			String testMethodName = result.getMethod().getMethodName();
+			ExtentTest test = ExtentManager.createTest(testMethodName).log(Status.FAIL,
 
-				"Test Failed: " + result.getThrowable());
-		String path = ScreenshotUtil.captureScreenshot(DriverFactory.getDriver(), testMethodName);
-		test.addScreenCaptureFromPath(path);
-		 }
+					"Test Failed: " + result.getThrowable());
+			String path = ScreenshotUtil.captureScreenshot(DriverFactory.getDriver(), testMethodName);
+			test.addScreenCaptureFromPath(path);
+		}
 	}
 
 	@Override
@@ -66,9 +61,5 @@ public class TestListener implements ITestListener {
 		logger.info("*******Test Suite Finished: " + context.getName());
 		ExtentManager.getExtentReports().flush();
 	}
-	
-	
-}
-	    
-	
 
+}
