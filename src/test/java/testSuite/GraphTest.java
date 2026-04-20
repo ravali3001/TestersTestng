@@ -51,7 +51,7 @@ package testSuite;
 			
 			 String actualOutput = pom.getArrayPage().getTryEditorResult();
 		       
-		        System.out.println("TestCase: " + testCaseName + " | Expected: " + expectedOutput + " | Actual: " + actualOutput);
+		        logger.info("TestCase: " + testCaseName + " | Expected: " + expectedOutput + " | Actual: " + actualOutput);
 
 		        Assert.assertEquals(actualOutput, expectedOutput);
 		    }
