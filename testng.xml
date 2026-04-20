@@ -20,8 +20,6 @@
 		</classes>
 	</test>
 
-
-
 	<test name="FirefoxTest">
 		<parameter name="browser" value="firefox" />
 		<classes>

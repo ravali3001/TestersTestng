@@ -4,11 +4,14 @@ import org.openqa.selenium.WebDriver;
 
 import pageObjects.ArrayPage;
 import pageObjects.DataStructuresPages;
+import pageObjects.GraphPages;
 import pageObjects.HomePages;
+import pageObjects.LinkedList;
 import pageObjects.LoginPage;
 import pageObjects.QueuePage;
 import pageObjects.RegisterPage;
 import pageObjects.StackPage;
+import pageObjects.TreePages;
 import pageObjects.TryEditorPage;
 
 public class PageObjectManager {
@@ -21,10 +24,14 @@ private RegisterPage registerPage;
     private StackPage stackPage;
     private QueuePage queuePage;
     private TryEditorPage tryEditorPage;
+    private TreePages treePage;
+    private LinkedList linkedPage;
+    private GraphPages graphPage;
+    
 
     public PageObjectManager() {}
 
-    public PageObjectManager(WebDriver driver) {
+    public PageObjectManager(WebDriver driver) {  
         this.driver = driver;
     }
     public RegisterPage getRegisterPage() {
@@ -57,4 +64,14 @@ private RegisterPage registerPage;
 
     public TryEditorPage getTryEditorPage() {
         return (tryEditorPage == null) ? tryEditorPage = new TryEditorPage() : tryEditorPage;
-    }}
+    }
+    public TreePages getTreePage() {
+        return (treePage == null) ? treePage = new TreePages() : treePage; 
+    }
+    public LinkedList getLinkedPage() {
+        return (linkedPage == null) ? linkedPage = new LinkedList() : linkedPage; 
+    }
+    public GraphPages getGraphPage() {
+        return (graphPage == null) ? graphPage = new GraphPages() : graphPage; 
+    }
+}

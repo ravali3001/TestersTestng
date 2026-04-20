@@ -188,7 +188,18 @@ public class TestDataProvider {
 		        {"User3", "abc@123", "xyz@123", "password_mismatch:The two password fields didn’t match."}
 	        };
 	    }
-	
+	@DataProvider(name = "LinkedlistData")
+    public Object[][] codeDatalink() {
+        return new Object[][] {
+            {"Introduction"},
+            {"Creating Linked LIst"},
+            {"Types of Linked List"},
+            {"Implement Linked List in Python"},
+            {"Traversal"},
+            {"Insertion"},
+                    {"Deletion"}
+            };
+    }
 	
 	
 }
