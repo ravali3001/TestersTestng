@@ -2,6 +2,5 @@
 target/
 test-output/
 *.html
-*.xml
 .DS_Store
 chaintestreport/
