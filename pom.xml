@@ -24,19 +24,20 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.26.0</version>
 		</dependency>
-		<!-- Source: https://mvnrepository.com/artifact/com.aventstack/chaintest-testng -->
-<dependency>
-    <groupId>com.aventstack</groupId>
-    <artifactId>chaintest-testng</artifactId>
-    <version>1.0.12</version>
-    <scope>compile</scope>
-</dependency>
-<!--To avoid conflicts with Extent Reports" -->
-<dependency>
-    <groupId>org.freemarker</groupId>
-    <artifactId>freemarker</artifactId>
-    <version>2.3.34</version>
-</dependency>
+		<!-- Source:
+		https://mvnrepository.com/artifact/com.aventstack/chaintest-testng -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>chaintest-testng</artifactId>
+			<version>1.0.12</version>
+			<scope>compile</scope>
+		</dependency>
+		<!--To avoid conflicts with Extent Reports" -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.34</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.testng</groupId>

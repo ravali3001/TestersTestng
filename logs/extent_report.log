@@ -1,0 +1,19 @@
+2026-04-20 13:00:01 INFO  TestListener - *******Test Suite Started: ChromeTest
+2026-04-20 13:00:02 INFO  DriverFactory - Running in <chrome> browser.
+2026-04-20 13:00:09 INFO  DriverFactory - launching chrome browser
+2026-04-20 13:00:14 INFO  TestListener - ********Test Started: verifyInvalidLoginErrorMsg
+2026-04-20 13:00:16 INFO  LoginTest - login error message displayed.
+2026-04-20 13:00:16 INFO  RetryAnalyser - Retry #1 for test verifyInvalidLoginErrorMsg
+2026-04-20 13:00:16 INFO  TestListener - ********Test Skipped: verifyInvalidLoginErrorMsg
+2026-04-20 13:00:16 INFO  DriverFactory - Running in <chrome> browser.
+2026-04-20 13:00:22 INFO  DriverFactory - launching chrome browser
+2026-04-20 13:00:26 INFO  TestListener - ********Test Started: verifyInvalidLoginErrorMsg
+2026-04-20 13:00:28 INFO  LoginTest - login error message displayed.
+2026-04-20 13:00:28 INFO  RetryAnalyser - Retry #2 for test verifyInvalidLoginErrorMsg
+2026-04-20 13:00:28 INFO  TestListener - ********Test Skipped: verifyInvalidLoginErrorMsg
+2026-04-20 13:00:28 INFO  DriverFactory - Running in <chrome> browser.
+2026-04-20 13:00:34 INFO  DriverFactory - launching chrome browser
+2026-04-20 13:00:38 INFO  TestListener - ********Test Started: verifyInvalidLoginErrorMsg
+2026-04-20 13:00:40 INFO  LoginTest - login error message displayed.
+2026-04-20 13:00:40 INFO  TestListener - ********Test Failed: verifyInvalidLoginErrorMsg
+2026-04-20 13:00:40 INFO  TestListener - *******Test Suite Finished: ChromeTest
